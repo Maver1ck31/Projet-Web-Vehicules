@@ -12,7 +12,11 @@
         <link href="css/jquery.bxslider.css" rel="stylesheet" />
     </head>
     <body id="top">
-        <div id="conteneur">
-            <div id="entete">
+        <header id="entete">
+            <?php 
+                include 'inc/menu.inc.php';
+            ?>
+        </header>
+            <div id="conteneur">
                 <!--<a href="index.php"><h1><i>Portfolio William Henry</i></h1></a>-->
                 <!-- entete -->
