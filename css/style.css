@@ -1,0 +1,206 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15 mai 2017, 20:41:00
+    Author     : william
+*/
+
+@charset "utf-8";
+
+/* -- Global -- */
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #014E86;
+}
+
+h1 {
+    text-align: center;
+    font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
+}
+
+h2 {
+    font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
+    margin-top: 20px;
+    margin-bottom: 15px;  
+}
+
+/* -- body -- */
+body {
+    margin-left:20px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-color: #F1F1F1 /* gris leger */
+    /* background-image: url("../img/background.jpg"); */
+    background-attachment: fixed;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+}
+
+div#topbanner {
+    text-align: center;
+    display: block;
+    background-color: #014E86;
+    color: white;
+    border-radius: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+div#topbanner > ul {
+	padding: 0;
+}
+
+div#topbanner a {
+    font-size: 18px;
+    color: white;
+    list-style-type: none;
+}
+
+div#topbanner a:hover {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+div#topbanner a:active {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+div#topbanner li {
+    display: inline;
+    list-style-type: none;
+    padding: 0 0.5em;
+}
+
+/* -- conteneur -- */
+div#conteneur {
+    /* background-color: grey;/* #FFFFFF; /* blanc */
+    width: 990px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    /* border-radius: 10px;
+    box-shadow: 1px 1px 12px #555; */
+    opacity: 1.0;
+    color: black;
+}
+
+#titre {
+    font-weight: bold;
+    text-decoration: underline;    
+}
+
+/* -- entête -- */
+div#entete h1 {
+    font-size: 48px;
+    color: black;
+    text-decoration: underline;
+}
+
+/* -- menu -- */
+div#menu {
+    float: left;
+    width: 230px;
+    padding: 10px; 
+    position: fixed;
+    color: dodgerblue;
+}
+
+div#menu a {
+    font-size: 18px;
+    color: black;
+}
+
+div#menu a:hover {
+    color: dodgerblue;
+}
+
+/* -- contenu -- */
+div#contenu {
+    margin-left: 100px; /* = width du div#menu + 20 */
+    margin-right: 100px;
+    padding: 10px;
+}
+
+.pagination a {
+    border: 1px solid #E3E3E3; /* gris clair */
+    padding: 2px;
+}
+
+.pagination a:hover {
+    background-color: #E3E3E3; /* gris clair */
+}
+
+div#specific {
+    border-style: solid;
+    border-color: lightgray;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 10px;
+}
+
+#sansbord {
+    border-style: none;
+    border-width: 0px;
+    border-color: white;
+    
+}
+
+#imageVeille {
+    width: 100px;
+    height: 100px;
+}
+
+/* -- Video -- */
+div#video {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: transparent;
+}
+
+/* -- Bas de page -- */
+div#clear {
+    clear:both;
+}
+
+div#bas {
+    font-size: 0.8em;
+    text-align: center;
+    padding: 10px;
+}
+
+/*a {
+    color: black;
+}*/
+
+div#entete a:hover {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+div#banner_image {
+    text-align: center;
+}
+
+section#image {
+    padding: 10px;
+    text-align: center;
+}
+
+#img_techM {
+	text-align: center;
+}
