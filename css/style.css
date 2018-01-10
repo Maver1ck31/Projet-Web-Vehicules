@@ -35,29 +35,29 @@ h2 {
 
 /* -- body -- */
 body {
-    margin-left:20px;
     font-family: Arial, Helvetica, sans-serif;
     /* background-color: #F1F1F1 /* gris leger */
     /* background-image: url("../img/background.jpg"); */
     background-attachment: fixed;
     /* background-repeat: no-repeat; */
     background-size: cover;
+    margin: 0px;
 }
 
 div#topbanner {
     text-align: center;
-    display: block;
     background-color: #014E86;
     color: white;
     border-radius: 5px;
-    padding-top: 1px;
-    padding-bottom: 1px;
     width: 300px;
     height: 600px;
+    float: left;
+    position: fixed;
 }
 
 div#topbanner > ul {
 	padding: 0;
+        margin: 0px
 }
 
 div#topbanner a {
@@ -80,17 +80,20 @@ div#topbanner li {
     /* display: inline; */
     list-style-type: none;
     padding: 0 0.5em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-width: 0px 0px 1px 0px;
+    border-bottom-color: white;
+    border-style: solid;
 }
 
 /* -- conteneur -- */
 div#conteneur {
     /* background-color: grey;/* #FFFFFF; /* blanc */
-    width: 990px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
     margin-bottom: 20px;
-    padding: 10px;
+/*    padding: 10px;*/
     /* border-radius: 10px;
     box-shadow: 1px 1px 12px #555; */
     opacity: 1.0;
@@ -103,10 +106,17 @@ div#conteneur {
 }
 
 /* -- entête -- */
+header {
+    background-color: blue;
+}
 div#entete h1 {
     font-size: 48px;
     color: black;
     text-decoration: underline;
+}
+
+div#entete img {
+    display: block;
 }
 
 /* -- menu -- */
@@ -129,7 +139,7 @@ div#menu a:hover {
 
 /* -- contenu -- */
 div#contenu {
-    margin-left: 100px; /* = width du div#menu + 20 */
+    margin-left: 320px; /* = width du div#menu + 20 */
     margin-right: 100px;
     padding: 10px;
 }
@@ -194,10 +204,6 @@ a:visited {
     text-decoration: none;
 }
 
-div#banner_image {
-    text-align: center;
-}
-
 section#image {
     padding: 10px;
     text-align: center;
@@ -205,4 +211,17 @@ section#image {
 
 #img_techM {
 	text-align: center;
+}
+
+#logoFordG {
+    margin-left: 5px;
+}
+
+#logoFordD {
+    margin-right: 5px;
+}
+
+#logoFordPerf {
+    margin:auto;
+    
 }

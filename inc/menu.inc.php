@@ -9,9 +9,9 @@
 //}
 //?>
 
-<div id="banner_image">
+<!-- <div id="banner_image">
     <img src="images/fordPerformanceLogo.jpg" width="673" height="300" style="margin-left: 0px;" alt="Ford Performance"/>
-</div>
+</div> -->
 
 <div id="topbanner">
     <ul>

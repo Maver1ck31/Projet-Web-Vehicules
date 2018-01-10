@@ -13,10 +13,21 @@
     </head>
     <body id="top">
         <header id="entete">
-            <?php 
-                include 'inc/menu.inc.php';
-            ?>
+            <div id="banner_image">
+                <!--<div  >-->
+                    <img src="images/logo_Ford.png" style="margin-left: 0px; width: 15%; height: 15%;" alt="Ford" id="logoFordG"/>
+                <!--</div>-->
+                <!--<div id="logoFordPerf">-->
+                    <img src="images/Logo_Ford_performance.png" style="margin-left: 0px;" alt="Ford Performance" id="logoFordPerf"/>
+                <!--</div>-->
+                <!--<div  id="logoFordD">-->
+                    <img src="images/logo_Ford.png" style="margin-left: 0px; width: 15%; height: 15%;" alt="Ford" id="logoFordD"/>
+                <!--</div>-->
+            </div>
         </header>
             <div id="conteneur">
                 <!--<a href="index.php"><h1><i>Portfolio William Henry</i></h1></a>-->
                 <!-- entete -->
+                <?php 
+                    include 'inc/menu.inc.php';
+                ?>
