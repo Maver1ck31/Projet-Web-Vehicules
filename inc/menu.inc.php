@@ -9,20 +9,16 @@
 //}
 //?>
 
-<!-- <div id="banner_image">
-    <img src="images/fordPerformanceLogo.jpg" width="673" height="300" style="margin-left: 0px;" alt="Ford Performance"/>
-</div> -->
-
-<nav>
-    <img src="images/logo_main-fordracing.png" alt="Ford" id="logoFordRacing"/>
-    <ul>
-        <?php
-//        foreach ($tableau_menu_items as $menu_item) {
-//            echo '<li><a href="' . $menu_item->get_link() .'">' . $menu_item->get_label() . '</a></li>';
-//        }
-        ?>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="photos.php">Photos</a></li>
-        <li><a href="connexion.php">Connexion</a></li>
-    </ul>
-</nav>
+            <nav>
+                <img src="images/logo_main-fordracing.png" alt="Ford" id="logoFordRacing"/>
+                <ul>
+                    <?php
+                    //        foreach ($tableau_menu_items as $menu_item) {
+                    //            echo '<li><a href="' . $menu_item->get_link() .'">' . $menu_item->get_label() . '</a></li>';
+                    //        }
+                    ?>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="photos.php">Photos</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
+                </ul>
+            </nav>

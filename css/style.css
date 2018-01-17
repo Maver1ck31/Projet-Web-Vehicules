@@ -46,17 +46,19 @@ nav {
     /*background-color: #014E86;*/
     /*border-radius: 5px;*/
     width: 300px;
-    min-height: 100%;
-    position: fixed;
-    /*float: left;*/
+/*    min-height: -webkit-fill-available;
+    position: inherit;
+    float: left;*/
     /*margin-top: 10px;*/
 }
 
 nav > ul {
 	padding: 0;
         margin: 0px;
+        width: 300px;
         text-align: left;
         font-size: 1.5em;
+        position: fixed;
 }
 
 nav a {
@@ -84,7 +86,7 @@ nav li {
 }
 
 nav li:hover {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     background-color: rgba(138,156,168,0.5);
 }
 
@@ -93,13 +95,13 @@ div#conteneur {
     /* background-color: grey;/* #FFFFFF; /* blanc */
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    display: flex;
+    min-height: -webkit-fill-available;
 /*    padding: 10px;*/
     /* border-radius: 10px;
     box-shadow: 1px 1px 12px #555; */
-    opacity: 1.0;
     color: black;
-    height: 100%;
+    /*height: -webkit-fill-available;*/
 }
 
 #titre {
@@ -141,9 +143,10 @@ div#menu a:hover {
 
 /* -- contenu -- */
 div#contenu {
-    margin-left: 320px; /* = width du div#menu + 20 */
-    margin-right: 100px;
     padding: 10px;
+    /*float: left;*/
+    flex:1;
+    /*min-height: -webkit-fill-available;*/
 }
 
 .pagination a {
