@@ -1,0 +1,231 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15 mai 2017, 20:41:00
+    Author     : william
+*/
+
+@charset "utf-8";
+
+/* -- Global -- */
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+    font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
+}
+
+h2 {
+    font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
+    margin-top: 20px;
+    margin-bottom: 15px;  
+}
+
+/* -- body -- */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-color: #F1F1F1 /* gris leger */
+    /* background-image: url("../img/background.jpg"); */
+    background-attachment: fixed;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    margin: 0px;
+    min-height: 100%;
+}
+
+nav {
+    text-align: center;
+    background-color: rgb(75,91,104);
+    /*background-color: #014E86;*/
+    /*border-radius: 5px;*/
+    width: 300px;
+    overflow: hidden;
+/*    min-height: -webkit-fill-available;
+    position: inherit;
+    float: left;*/
+    /*margin-top: 10px;*/
+}
+
+nav > ul {
+	padding: 0;
+        margin: 0px;
+        width: 300px;
+        text-align: left;
+        font-size: 1.5em;
+        position: fixed;
+}
+
+nav a {
+    /*font-size: 18px;*/
+    color: #da190b;
+    list-style-type: none;
+    font-weight: bold;
+}
+
+/*nav a:active {
+    color: lightgrey;
+    text-decoration: none;
+}*/
+
+nav li {
+    /* display: inline; */
+    list-style-type: none;
+    padding: 0 0.5em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    /*border-width: 0px 0px 1px 0px;*/
+    /*border-bottom-color: #da190b;*/
+    /*border-style: solid;*/
+}
+
+nav li:hover {
+    /*text-decoration: underline;*/
+    background-color: rgba(138,156,168,0.5);
+	padding-left:60px;
+}
+
+/* -- conteneur -- */
+div#conteneur { 
+    /* background-color: grey;/* #FFFFFF; /* blanc */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    min-height: -webkit-fill-available;
+	min-width: 900px;
+/*    padding: 10px;*/
+    /* border-radius: 10px;
+    box-shadow: 1px 1px 12px #555; */
+    color: black;
+    /*height: -webkit-fill-available;*/
+}
+
+#titre {
+    font-weight: bold;
+    text-decoration: underline;    
+}
+
+/* -- entête -- */
+header {
+    background-color: rgba(138,156,168,0.5);
+    height: 200px;
+	min-width: 900px;
+    text-align: center;
+    box-shadow: 0px 10px 10px rgba(138,156,168,0.2);
+}
+div#entete h1 {
+    font-size: 48px;
+    color: black;
+    text-decoration: underline;
+}
+
+
+/* -- menu -- */
+div#menu {
+    float: left;
+    width: 230px;
+    padding: 10px; 
+    position: fixed;
+    color: dodgerblue;
+}
+
+div#menu a {
+    font-size: 18px;
+    color: black;
+}
+
+div#menu a:hover {
+    color: dodgerblue;
+}
+
+/* -- contenu -- */
+div#contenu {
+    padding: 10px;
+    /*float: left;*/
+    flex:1;
+    /*min-height: -webkit-fill-available;*/
+}
+
+.pagination a {
+    border: 1px solid #E3E3E3; /* gris clair */
+    padding: 2px;
+}
+
+.pagination a:hover {
+    background-color: #E3E3E3; /* gris clair */
+}
+
+div#specific {
+    border-style: solid;
+    border-color: lightgray;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 10px;
+}
+
+#sansbord {
+    border-style: none;
+    border-width: 0px;
+    border-color: white;
+    
+}
+
+#imageVeille {
+    width: 100px;
+    height: 100px;
+}
+
+/* -- Video -- */
+div#video {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: transparent;
+}
+
+/* -- Bas de page -- */
+/*div#clear {
+    clear:both;
+}*/
+
+div#bas {
+    font-size: 0.8em;
+    text-align: center;
+    padding: 10px;
+}
+
+/*a {
+    color: black;
+}*/
+
+div#entete a:hover {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+section#image {
+    padding: 10px;
+    text-align: center;
+}
+
+#img_techM {
+	text-align: center;
+}
+
+#logoFordRacing {
+    margin-top: 10px;
+}
+
+#logoFordPerf {
+    margin-top: 60px;  
+}
