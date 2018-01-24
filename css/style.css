@@ -46,6 +46,7 @@ nav {
     /*background-color: #014E86;*/
     /*border-radius: 5px;*/
     width: 300px;
+    overflow: hidden;
 /*    min-height: -webkit-fill-available;
     position: inherit;
     float: left;*/

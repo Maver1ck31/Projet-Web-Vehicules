@@ -25,7 +25,8 @@ and open the template in the editor.
 }
 
 .mySlides img {
-    height: 550px;
+    width: 100%;
+    max-height: 70%;
 }
 
 /* Next & previous buttons */
