@@ -19,6 +19,6 @@
                     ?>
                     <li><a href="index.php">Accueil</a></li>
                     <li><a href="photos.php">Photos</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
+                    <li><a href="login.php">Connexion</a></li>
                 </ul>
             </nav>
