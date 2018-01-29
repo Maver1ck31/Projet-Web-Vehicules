@@ -1,5 +1,5 @@
 <?php
-session_start();
+include './inc/global.inc.php';
 
 $message = "";
 if (isset($_POST['submit'])) {
@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     
     // Retrieving user in database
     $sql = "SELECT * "
-            . "FROM users WHERE pseudo = '" . $username ."'";   
+            . "FROM user WHERE username = '" . $username ."'";   
     $res = $con->query($sql);
     $row = $res->fetch(PDO::FETCH_ASSOC);
     
@@ -45,11 +45,12 @@ include 'inc/entete.inc.php';
                 <h2 id="titre">Login</h2>
                 <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
 
-                <p>In order to access this website and view its content you should log in.</p>
+                <p>In order to access this website and view its content you should log in.
+                    </br> If you don't have an account you can <a href="register.php">register</a>.</p>
                 <form method="post" action="login.php">
                     <p>
                         <label for="username">Username</label><span style="color: red;">&nbsp;*</span></br>
-                        <input type="text" id="username" name="username" size="25" maxlength="25" value="<?php if(isset($_POST['pseudo'])){ echo $_POST['pseudo'];}?>" required="Veuillez compléter ce champ"/>
+                        <input type="text" id="username" name="username" size="25" maxlength="25" value="<?php if(isset($_POST['username'])){ echo $_POST['username'];}?>" required="Veuillez compléter ce champ"/>
                         </br>
                         </br>
                         <label for="passwd">Password</label><span style="color: red;">&nbsp;*</span></br>
@@ -60,8 +61,8 @@ include 'inc/entete.inc.php';
                     <div style="width:190px; margin-right:auto">
                         <fieldset>
                             <legend>Actions</legend>
-                            <input type="submit" name="submit" value="Envoyer"/>
-                            <input type="reset" value="Réinitialiser"/>
+                            <input type="submit" name="submit" value="Connect"/>
+                            <input type="reset" value="Reset"/>
                         </fieldset>
                     </div>
                     </br>

@@ -17,7 +17,7 @@
                     //            echo '<li><a href="' . $menu_item->get_link() .'">' . $menu_item->get_label() . '</a></li>';
                     //        }
                     ?>
-                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="photos.php">Photos</a></li>
                     <li><a href="login.php">Connexion</a></li>
                 </ul>
