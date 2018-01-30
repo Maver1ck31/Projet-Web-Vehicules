@@ -1,5 +1,4 @@
 <?php
-include 'inc/global.inc.php';
 include 'inc/entete.inc.php';
 ?>
 

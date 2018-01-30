@@ -1,8 +1,12 @@
+<?php
+session_start();
+include 'global.inc.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Ford Sports cars library</title>
+        <title>Ford Sports Cars Library</title>
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/slideshow.css" />
     </head>

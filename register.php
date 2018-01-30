@@ -1,6 +1,4 @@
 <?php
-include './inc/global.inc.php';
-
 $inscrit = "";
 $userExists = FALSE;
 $mailExists = FALSE;
@@ -54,7 +52,6 @@ if (isset($_POST['submit'])) {
             </script>-->
 
             <?php
-            
             } else if ($mailExists) {
                 $inscrit = "<p style='color: red;'>Error the email adress is already linked to an account!</p>";
                 $_POST['email'] = "";
@@ -72,11 +69,10 @@ if (isset($_POST['submit'])) {
 
 <!-- Include header and menu-->
 <?php
-include 'inc/global.inc.php';
 include 'inc/entete.inc.php';
 ?>
 
-<div id="contenu">
+            <div id="contenu">
                 <h2 id="titre">Register</h2>
                 <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
 

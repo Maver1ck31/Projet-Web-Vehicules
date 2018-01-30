@@ -1,6 +1,5 @@
 <?php
-include './inc/global.inc.php';
-
+session_start();
 $message = "";
 if (isset($_POST['submit'])) {
     // Retrieving password inputed by user
@@ -27,18 +26,15 @@ if (isset($_POST['submit'])) {
             // User and password match, redirecting and saving data
             $_SESSION['name'] = $row['username'];
             $_SESSION['usertype'] = $row['id_usertype'];
-            header('location: photos.php');
+            header('location: ./photos.php');
         }
     } else {    // User doesn't exists in database
         $message = "User not found, check your credentials";
     }
 }
-
 ?>
-
 <!-- Include header and menu-->
 <?php
-include 'inc/global.inc.php';
 include 'inc/entete.inc.php';
 ?>
             <div id="contenu">

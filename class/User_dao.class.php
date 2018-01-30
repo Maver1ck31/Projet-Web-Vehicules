@@ -1,6 +1,6 @@
 <?php
 
-include './Mon_exception.class.php';
+include 'Mon_exception.class.php';
 
 class User_dao {
 
@@ -15,9 +15,9 @@ class User_dao {
     // Fonction de connection à la base de donnée (lancée par le constructeur)
     public function connecter() {
         $user = 'root';
-        $passwd = 'stssio!';
-        $host = 'localhost:8890';
-        $base = 'fordPerfLibrary_db';
+        $passwd = 'root';
+        $host = 'localhost';
+        $base = 'photoLibrary';
         $dsn = 'mysql:host=' . $host . ';dbname=' . $base;
 
         try {
@@ -45,6 +45,31 @@ class User_dao {
         }
     }
     
+    public function removeUser($id) {
+        try {
+            $con = $this->con;
+            $sql = "DELETE FROM user WHERE id = " . $id;
+            $con->exec($sql);
+        } catch (PDOException $ex) {
+            $message = "Erreur lor de la requête SQL : " . $e->getMessage();
+            throw new Mon_exception($message);
+            return;
+        }
+    }
+    
+    public function unreportUser($id) {
+        try {
+            $con = $this->con;
+            $sql = "UPDATE user SET isReported = 0 WHERE id = " . $id;
+            $con->exec($sql);
+        } catch (PDOException $ex) {
+            $message = "Erreur lor de la requête SQL : " . $e->getMessage();
+            throw new Mon_exception($message);
+            return;
+        }
+    }
+
+
     public function retrieveUser($username, $passwd) {
         try {
             $con = $this->con;
@@ -59,6 +84,25 @@ class User_dao {
             throw new Mon_exception($message);
             return;
         }
+    }
+    
+    public function retrieveReportedUser() {
+        
+        try {
+            $con = $this->con;
+            $sql = "SELECT * FROM user WHERE isReported = 1";
+            $res = $con->query($sql);
+
+            while ($user = $res->fetch(PDO::FETCH_ASSOC)) {
+                $tableau[] = new User($user);
+            }
+        } catch (PDOException $exc) {
+            $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
+            throw new Mon_exception($message);
+            return;
+        }
+        
+        return $tableau;
     }
 
 }
