@@ -1,4 +1,15 @@
 
+function isMobile(){
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        // You are in mobile browser
+        return true;
+    } else {
+        return false;
+    }
+}
+
+var isMobile = isMobile();
+
 $( window ).scroll( function (){
     var currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
     //console.log("currentScroll = " + currentScroll);
@@ -11,12 +22,10 @@ $( window ).resize(function() {
 })
 
 $(document).ready(function(){
+    
     handleNavHeight();
     handleNav();
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        // You are in mobile browser
-        $("nav").hide();
-    }
+
 })
 
 function handleNavHeight(){
@@ -29,12 +38,24 @@ function handleNavHeight(){
 
 function handleNav(){
     var windowWidth = window.innerWidth;
-    (windowWidth < 900) ? $("nav").hide() : $("nav").show();
+    if( isMobile ) {
+        // You are in mobile browser
+        $("nav").hide();
+    } else {
+        if(windowWidth < 900){
+            $("nav").hide();
+            $("#ThreeLineMenu").show();
+        } else {
+            $("nav").show();
+            $("#ThreeLineMenu").hide();
+        }
+    }
+
     //console.log("windowWidth = " + windowWidth);
 }
 
 function toogleMenu(){
-    console.log("coucou");
+    //console.log("coucou");
     $("nav").toggle();
 }
 
