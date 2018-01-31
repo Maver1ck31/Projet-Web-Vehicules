@@ -27,13 +27,17 @@ $reportedUsers = $dao->retrieveReportedUser();
                         <tr>
                             <th>Username</th>
                             <th>Email address</th>
-                            <!--<th>Actions</th>-->
+                            <th>Actions</th>
                         </tr>
-                        <tr>
                             <?php
                             foreach ($reportedUsers as $user) {
+                                echo '<tr>';
                                 echo '<td>' . $user->get_username() . '</td>'
-                                        . '<td>' . $user->get_mail() . '</td>';
+                                        . '<td>' . $user->get_mail() . '</td>'
+                                        . '<td><a href="edit.php?username=' . $user->get_username() . '"><img src="images/actions/pencil.png" title="Unreport"></a>&nbsp;&nbsp;'
+                                        . ' <a href="delete.php?username=' . $user->get_username() . '"><img src ="images/actions/delete.png" title="Delete"></a></td>';
+                                echo '</tr>';
+                                
                             }
                             ?>
                         </tr>
