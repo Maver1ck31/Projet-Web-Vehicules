@@ -188,9 +188,19 @@ div#specific {
 }
 
 td, th {
+    /*background-color: lightgrey;*/
+    color: black;
     border-style: solid;
+    border-width: 1px;
     border-color: black;
-    margin: 0px;
+    text-align: center;
+    padding: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    border-style: solid;
+    border-width: 1px;
 }
 
 /* -- Video -- */
