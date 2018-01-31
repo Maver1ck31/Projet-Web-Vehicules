@@ -12,10 +12,13 @@ include 'global.inc.php';
     </head>
     <body id="top">
         <header id="entete">
-            <img src="images/Logo_Ford_performance.png" style="margin-left: 0px;" alt="Ford Performance" id="logoFordPerf"/>
+            <img src="images/Logo_Ford_performance.png" style="margin-left: 0px; max-width: 90%;" alt="Ford Performance" id="logoFordPerf"/>
         </header>
         <div id="conteneur">
             <!-- entete -->
             <?php
             include 'inc/menu.inc.php';
             ?>
+            <div id="contenu">
+                <div style="max-width: 1000px; margin: auto; padding-left: 40px;">
+                    <div style="display: block; margin: 20px;">

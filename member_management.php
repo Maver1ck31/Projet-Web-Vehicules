@@ -18,29 +18,28 @@ $reportedUsers = $dao->retrieveReportedUser();
 <?php
 
 ?>
-            <div id="contenu">
-                <h2 id="titre">Member Management</h2>
-                <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
-                <p>Welcome to the forum of the ford performance cars.</p>
-                </br>
-                <h4>Reported Users</h4>
-                <table>
-                    <tr>
-                        <td>Username</td>
-                        <td>Email address</td>
-                        <!--<td>Actions</td>-->
-                    </tr>
-                    <tr>
-                        <?php
-                        foreach ($reportedUsers as $user) {
-                            echo '<td>' . $user->get_username() . '</td>'
-                                    . '<td>' . $user->get_mail() . '</td>';
-                        }
-                        ?>
-                    </tr>
-                </table>
-                
-                <!-- Footer -->
-                <?php
-                include 'inc/bas.inc.php';
-                ?>
+                    <h2 id="titre">Member Management</h2>
+                    <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
+                    <p>Welcome to the forum of the ford performance cars.</p>
+                    </br>
+                    <h4>Reported Users</h4>
+                    <table>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email address</th>
+                            <!--<th>Actions</th>-->
+                        </tr>
+                        <tr>
+                            <?php
+                            foreach ($reportedUsers as $user) {
+                                echo '<td>' . $user->get_username() . '</td>'
+                                        . '<td>' . $user->get_mail() . '</td>';
+                            }
+                            ?>
+                        </tr>
+                    </table>
+
+                    <!-- Footer -->
+                    <?php
+                    include 'inc/bas.inc.php';
+                    ?>

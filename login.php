@@ -37,7 +37,6 @@ if (isset($_POST['submit'])) {
 <?php
 include 'inc/entete.inc.php';
 ?>
-            <div id="contenu">
                 <h2 id="titre">Login</h2>
                 <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
 
