@@ -29,7 +29,11 @@ try {
                 <ul>
                     <?php
                             foreach ($tableau_menu_items as $menu_item) {
-                                echo '<li><a href="' . $menu_item->get_link() .'">' . $menu_item->get_label() . '</a></li>';
+                                if ($menu_item->get_link() != "login.php" && isset($_SESSION['name'])) {
+                                    echo '<li><a href="' . $menu_item->get_link() .'">' . $menu_item->get_label() . '</a></li>';
+                                } else if (!isset ($_SESSION['name'])) {
+                                    echo '<li><a href="' . $menu_item->get_link() .'">' . $menu_item->get_label() . '</a></li>';
+                                }
                             }
                     ?>
 <!--                    <li><a href="index.php">Home</a></li>
