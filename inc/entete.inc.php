@@ -13,6 +13,9 @@ include 'global.inc.php';
     <body id="top">
         <header id="entete">
             <img src="images/Logo_Ford_performance.png" style="margin-left: 0px; max-width: 90%;" alt="Ford Performance" id="logoFordPerf"/>
+            <div id="ThreeLineMenu">
+                <img src="images/ThreeLineMenu.png" alt="menu" onclick="toogleMenu();"/>
+            </div>
         </header>
         <div id="conteneur">
             <!-- entete -->
