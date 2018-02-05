@@ -27,7 +27,6 @@ class User_dao {
         } catch (PDOException $e) {
             $message = "Erreur lors de la connexion : " . $e->getMessage();
             throw new Mon_exception($message);
-            return;
         }
     }
     
@@ -35,37 +34,34 @@ class User_dao {
         try {
             $con = $this->con;
             $cryptPasswd = md5($passwd);
-            $sql = "insert into user(username, mail, passwd)"
-                    . "values ('$username', '$mail', '$cryptPasswd')";
+            $sql = "insert into user(username, mail, passwd, id_usertype, isReported)"
+                    . "values ('$username', '$mail', '$cryptPasswd', 1, 0)";
             $con->exec($sql);
         } catch (PDOException $e) {
             $message = "Erreur lor de la requête SQL : " . $e->getMessage();
             throw new Mon_exception($message);
-            return;
         }
     }
     
-    public function removeUser($id) {
+    public function removeUser($p_username) {
         try {
             $con = $this->con;
-            $sql = "DELETE FROM user WHERE id = " . $id;
+            $sql = "DELETE FROM user WHERE username = '$p_username'";
             $con->exec($sql);
         } catch (PDOException $ex) {
-            $message = "Erreur lor de la requête SQL : " . $e->getMessage();
+            $message = "Erreur lor de la requête SQL : " . $ex->getMessage();
             throw new Mon_exception($message);
-            return;
         }
     }
     
-    public function unreportUser($id) {
+    public function unreportUser($p_username) {
         try {
             $con = $this->con;
-            $sql = "UPDATE user SET isReported = 0 WHERE id = " . $id;
+            $sql = "UPDATE user SET isReported = 0 WHERE username = '$p_username'";
             $con->exec($sql);
         } catch (PDOException $ex) {
-            $message = "Erreur lor de la requête SQL : " . $e->getMessage();
+            $message = "Erreur lor de la requête SQL : " . $ex->getMessage();
             throw new Mon_exception($message);
-            return;
         }
     }
 
@@ -82,12 +78,11 @@ class User_dao {
         } catch (PDOException $e) {
             $message = "Erreur lor de la requête SQL : " . $e->getMessage();
             throw new Mon_exception($message);
-            return;
         }
     }
     
     public function retrieveReportedUser() {
-        
+        $tableau = NULL;
         try {
             $con = $this->con;
             $sql = "SELECT * FROM user WHERE isReported = 1";
@@ -99,7 +94,6 @@ class User_dao {
         } catch (PDOException $exc) {
             $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
             throw new Mon_exception($message);
-            return;
         }
         
         return $tableau;

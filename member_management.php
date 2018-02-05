@@ -12,10 +12,15 @@ document.location = 'index.php';
 include 'inc/entete.inc.php';
 
 $dao = new User_dao();
-$reportedUsers = $dao->retrieveReportedUser();
 
-?>
-<?php
+// Unreport or delete user
+if (isset($_POST['unreport'])) {
+    $dao->unreportUser($_POST['unreport']);
+} else if (isset ($_POST['delete'])) {
+    $dao->removeUser($_POST['delete']);
+}
+
+$reportedUsers = $dao->retrieveReportedUser();
 
 ?>
                     <h2 id="titre">Member Management</h2>
@@ -23,23 +28,28 @@ $reportedUsers = $dao->retrieveReportedUser();
                     <p>Welcome to the forum of the ford performance cars.</p>
                     </br>
                     <h4>Reported Users</h4>
-                    <table>
-                        <tr>
-                            <th>Username</th>
-                            <th>Email address</th>
-                            <th>Actions</th>
-                        </tr>
                             <?php
-                            foreach ($reportedUsers as $user) {
-                                echo '<tr>';
-                                echo '<td>' . $user->get_username() . '</td>'
-                                        . '<td>' . $user->get_mail() . '</td>'
-                                        . '<td><form action="" method="POST">'
-                                        . '<button name="unreport" value="unreport">Unreport</button>'
-                                        . '<button name="delete" value="delete">Delete</button>'
-                                        . '</form></td>';
-                                echo '</tr>';
-                                
+                            if ($reportedUsers != NULL) {
+                                echo '<table>'
+                                        . '<tr>
+                                            <th>Username</th>
+                                            <th>Email address</th>
+                                            <th>Actions</th>
+                                           </tr>';
+                                foreach ($reportedUsers as $user) {
+                                    echo '<tr>';
+                                    echo '<td>' . $user->get_username() . '</td>'
+                                            . '<td>' . $user->get_mail() . '</td>'
+                                            . '<td><form action="member_management.php" method="POST">'
+                                            . '<button name="unreport" value="'. $user->get_username() .'">Unreport</button>'
+                                            . '<button name="delete" value="'. $user->get_username() .'">Delete</button>'
+                                            . '</form></td>';
+                                    echo '</tr>';
+                                }
+                                echo '</tr>
+                                </table>';
+                            } else {
+                                echo '<p>There is no reported user.</p>';
                             }
                             ?>
                         </tr>
