@@ -9,6 +9,8 @@ function isMobile(){
 }
 
 var isMobile = isMobile();
+handleNavHeight();
+handleNav();
 
 $( window ).scroll( function (){
     var currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -22,10 +24,8 @@ $( window ).resize(function() {
 })
 
 $(document).ready(function(){
-    
     handleNavHeight();
     handleNav();
-
 })
 
 function handleNavHeight(){
@@ -34,6 +34,7 @@ function handleNavHeight(){
     //var FooterHeight = $("#bas").height() + 20; // + border width
     //$("body").css("min-height", windowHeight);
     $("nav").css("min-height", (windowHeight - headerHeight));
+    $("#conteneur").css("min-height", (windowHeight - headerHeight));
 }
 
 function handleNav(){
