@@ -34,8 +34,10 @@ $reportedUsers = $dao->retrieveReportedUser();
                                 echo '<tr>';
                                 echo '<td>' . $user->get_username() . '</td>'
                                         . '<td>' . $user->get_mail() . '</td>'
-                                        . '<td><a href="edit.php?username=' . $user->get_username() . '"><img src="images/actions/pencil.png" title="Unreport"></a>&nbsp;&nbsp;'
-                                        . ' <a href="delete.php?username=' . $user->get_username() . '"><img src ="images/actions/delete.png" title="Delete"></a></td>';
+                                        . '<td><form action="" method="POST">'
+                                        . '<button name="unreport" value="unreport">Unreport</button>'
+                                        . '<button name="delete" value="delete">Delete</button>'
+                                        . '</form></td>';
                                 echo '</tr>';
                                 
                             }
