@@ -40,17 +40,18 @@ if ($topic_id != NULL) {
                             foreach ($messages as $message) {
                                 echo '<tr>'
                                     . '<td style="text-align: left;">'. $message->get_contenu_msg() . '</td>'
-                                    . '<td>'. $message->get_id_emetteur(). '</td>'
+                                    . '<td>Posted by '. $message->get_id_emetteur(). ' on ' . $message->get_date_msg() . '</td>'
                                     . '<td></td>'
                                     . '<td></td>'
                                 . '</tr>';
                             }
-                            echo '<a href="create_message.php?id_topic=' . $topic_id
-                            . '&name=' . $topic_name . '"><button>Create new message</button></a>';
+                            echo '</table>'
+                            . '<p><a href="create_message.php?id_topic=' . $topic_id
+                            . '&name=' . $topic_name . '"><button>Create new message</button></a></p>';
                         } else {
-                            echo 'There is no message for this topic yet.'
-                            . '<a href="create_message.php?id_topic=' . $topic_id
-                            . '&name=' . $topic_name . '"><button>Create new message</button></a>';
+                            echo '<p>There is no message for this topic yet.</p>'
+                            . '<p><a href="create_message.php?id_topic=' . $topic_id
+                            . '&name=' . $topic_name . '"><button>Create new message</button></a></p>';
                         }
                     ?>
                     </div>

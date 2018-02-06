@@ -2,8 +2,8 @@
 include 'inc/entete.inc.php';
 ?>   
                         <h2 id="titre">Photos Library</h2>
-                        <p>This website has the purpose to show some images of Ford Performance
-                            cars such as:
+                        <p>This website has the purpose to show some images and 
+                            discuss about Ford Performance cars such as:
                         </p>
 
                         <div style="text-align: center;">

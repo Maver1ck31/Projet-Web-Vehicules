@@ -26,7 +26,13 @@ if (isset($_POST['submit'])) {
             // User and password match, redirecting and saving data
             $_SESSION['name'] = $row['username'];
             $_SESSION['usertype'] = $row['id_usertype'];
-            header('location: ./photos.php');
+            
+            if ($row['id_usertype'] == 3) {
+              header('location: ./member_management.php');  
+            } else {
+                header('location: ./forum_home.php');
+            }
+            
         }
     } else {    // User doesn't exists in database
         $message = "User not found, check your credentials";
