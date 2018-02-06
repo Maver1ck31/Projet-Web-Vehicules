@@ -5,10 +5,11 @@ class User {
     private $username = '';
     private $passwd = '';
     private $mail = '';
-    private $idUsertype = 0;
+    private $id_usertype = 0;
     private $isReported = 0;
 
     function __construct($tableau = array()) {
+        settype($this->id_usertype, "integer");
         $this->hydrater($tableau);
     }
 
@@ -29,8 +30,8 @@ class User {
         return $this->mail;
     }
 
-    function get_idUsertype() {
-        return $this->idUsertype;
+    function get_id_usertype() {
+        return $this->id_usertype;
     }
 
     function get_isReported() {
@@ -54,8 +55,8 @@ class User {
         $this->mail = $mail;
     }
 
-    function set_idusertype($idUsertype) {
-        $this->idUsertype = $idUsertype;
+    function set_id_usertype($idUsertype) {
+        $this->id_usertype = $idUsertype;
     }
 
     function set_isReported($isReported) {

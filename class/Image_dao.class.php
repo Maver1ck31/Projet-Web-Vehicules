@@ -2,7 +2,7 @@
 
 include_once 'Exceptions/Mon_exception.class.php';
 
-class Reponse_dao {
+class Image_dao {
 
     // Objet PDO de connection à la BD
     private $con;
@@ -30,37 +30,42 @@ class Reponse_dao {
         }
     }
     
-    // Retrieve all answers correponding to a message
-    public function retieveAllAnswerByMessageId($messgeId) {
-        $tableau = NULL;
+    // Add a new image in DB
+    public function addImage($name, $link, $messageId) {
         try {
             $con = $this->con;
-            $sql = "SELECT * FROM reponse WHERE id_message = $messgeId";
-            $res = $con->query($sql);
-
-            while ($reponse = $res->fetch(PDO::FETCH_ASSOC)) {
-                $tableau[] = new Reponse($reponse);
-            }
-        } catch (PDOException $exc) {
-            $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
-            throw new Mon_exception($message);
-        }
-        
-        return $tableau;
-    }
-
-    // Insert a new answer with correct message and user
-    public function addAnswer($content, $user, $message) {
-        try {
-            $con = $this->con;
-            $content = $con->quote($content);
-            $sql = "insert into reponse(contenu_rep, date_rep, id_emetteur, id_message)"
-                    . "values ($content, SYSDATE(), '$user', $message)";
+            $name = $con->quote($name);
+            $link = $con->quote($link);
+            $sql = "insert into image(name, link, id_message)"
+                    . "values ($name, $link, $messageId)";
             $con->exec($sql);
         } catch (PDOException $e) {
             $message = "Erreur lor de la requête SQL : " . $e->getMessage();
             throw new Mon_exception($message);
         }
+    }
+    
+    // Retrieve image linked to a message
+    public function retrieveImageByMessageId($messageId) {
+        $image = NULL;
+        try {
+            $con = $this->con;
+            $sql = "SELECT * "
+                    . "FROM image "
+                    . "WHERE id_message = $messageId";
+            $res = $con->query($sql);
+            $row = $res->fetch(PDO::FETCH_ASSOC);
+            
+            if ($row != FALSE) {
+                $image = new Image($row);
+            }
+             
+        } catch (PDOException $e) {
+            $message = "Erreur lor de la requête SQL : " . $e->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $image;
     }
 }
 

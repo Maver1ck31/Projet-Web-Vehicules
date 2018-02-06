@@ -1,5 +1,7 @@
 ﻿<?php
 
+include_once 'Exceptions/Mon_exception.class.php';
+
 class menu_dao {
 
     // Objet PDO de connection à la BD

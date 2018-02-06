@@ -1,6 +1,6 @@
 <?php
 
-include 'Mon_exception.class.php';
+include_once 'Exceptions/Mon_exception.class.php';
 
 class Topic_dao {
 

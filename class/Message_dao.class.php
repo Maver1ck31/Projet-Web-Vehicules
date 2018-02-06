@@ -1,6 +1,6 @@
 <?php
 
-include 'Mon_exception.class.php';
+include_once 'Exceptions/Mon_exception.class.php';
 
 class Message_dao {
 
@@ -72,6 +72,7 @@ class Message_dao {
         try {
             $con = $this->con;
             $content = $con->quote($content);
+            error_log('message to add:' . $content);
             $sql = "insert into message(contenu_msg, date_msg, id_emetteur, id_topic)"
                     . "values ($content, SYSDATE(), '$user', $topic)";
             $con->exec($sql);
@@ -119,6 +120,29 @@ class Message_dao {
         }
         
         return $row;
+    }
+    
+    // Retrieve Message using emetteur and content
+    public function getMessageByUserAndContent($user, $content) {
+        try {
+            $con = $this->con;
+            $content = $con->quote($content);
+            $user = $con->quote($user);
+            $sql = "SELECT *
+                    FROM message
+                    WHERE contenu_msg = $content
+                    AND id_emetteur = $user ";
+            $res = $con->query($sql);
+
+            $row = $res->fetch(PDO::FETCH_ASSOC);
+            $message = new Message($row);
+            
+        } catch (PDOException $exc) {
+            $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $message;
     }
 }
 

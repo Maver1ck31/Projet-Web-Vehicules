@@ -9,6 +9,4 @@ class Mon_exception extends Exception {
     }
 
 }
-
-// Class Mon_exception
 ?>

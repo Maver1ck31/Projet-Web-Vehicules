@@ -1,6 +1,6 @@
 <?php
 
-//include 'Mon_exception.class.php';
+include_once 'Exceptions/Mon_exception.class.php';
 
 class User_dao {
 
@@ -89,6 +89,29 @@ class User_dao {
             $message = "Erreur lor de la requête SQL : " . $e->getMessage();
             throw new Mon_exception($message);
         }
+    }
+    
+    // Retrieve a specific user in db
+    public function retrievUserByUsername($username) {
+        $user = NULL;
+        try {
+           $con = $this->con;
+           $con->quote($username);
+           $sql = "SELECT * FROM user WHERE username = '$username'";
+           error_log('SQL Request: '.$sql);
+           $res = $con->query($sql);
+           $row = $res->fetch(PDO::FETCH_ASSOC);
+           
+           if ($row != FALSE) {
+               $user = new User($row);
+           }
+           
+        } catch (PDOException $e) {
+            $message = "Erreur lor de la requête SQL : " . $e->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $user;
     }
     
     public function retrieveReportedUser() {

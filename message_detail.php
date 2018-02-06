@@ -29,6 +29,7 @@ if (isset($_GET['name'])) {
 }
 
 $reponseDao = new Reponse_dao();
+$imageDoa = new Image_dao();
 
 if (isset($_POST['submit'])) {
     $content = htmlspecialchars($_POST['answer']);
@@ -45,6 +46,7 @@ if (isset($_GET['report'])) {
 }
 
 $reponses = $reponseDao->retieveAllAnswerByMessageId($message_id);
+$retrievedImage = $imageDoa->retrieveImageByMessageId($message_id);
 
 ?>
 <h2 id="titre">Answer <i><?php echo $detailedMessage->get_id_emetteur();?></i> Message in <i><?php echo $topic_name; ?></i> Topic</h2>
@@ -54,6 +56,13 @@ $reponses = $reponseDao->retieveAllAnswerByMessageId($message_id);
                     <p>Original message</p>
                     <textarea name="message" style="width: 500px; height: 100px;" disabled="disabled"><?php echo $detailedMessage->get_contenu_msg(); ?></textarea></p>
                     <?php
+                    // Display an image if necessary
+                    if ($retrievedImage != NULL) {
+                        echo '<p><a href="' . $retrievedImage->get_link() . '" target="_blank">'
+                        . '<img class="messageImg" src="' . $retrievedImage->get_link() . '" name="' . $retrievedImage->get_name()
+                        . '" alt="' . $retrievedImage->get_name() . '"/></a></p>';
+                    }
+                    
                     // Display all answers
                     if ($reponses != NULL) {
                         echo '<table>'
@@ -63,8 +72,17 @@ $reponses = $reponseDao->retieveAllAnswerByMessageId($message_id);
                             . '<th>Actions</th>'
                         . '</tr>';
                         foreach ($reponses as $reponse) {
+                            
+                            // Getting the author of the message
+                            if (!isset($userDao)) {
+                                $userDao = new User_dao();
+                            }
+                            $messageAuthor = $userDao->retrievUserByUsername($reponse->get_id_emetteur());
+                            error_log('idUsertType: ' . $messageAuthor->get_id_usertype());
+                                
                             // Handling actions depending on the type of user: admin can report users
-                            if ($_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
+                            if (($_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) 
+                                        && ($messageAuthor->get_id_usertype() != (int) 2 || $messageAuthor->get_id_usertype() != (int) 3)) {
                                 $actions = '<a href="message_detail.php?id_msg=' . $message_id 
                                          . '&report=' . $reponse->get_id_emetteur() . '&name=' . $topic_name . '">'
                                          . '<button>Report</button>'

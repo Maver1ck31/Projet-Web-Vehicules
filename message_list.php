@@ -25,7 +25,6 @@ if ($topic_id != NULL) {
 
 if (isset($_GET['report'])) {
     $userToReport = $_GET['report'];
-    $userDao = new User_dao();
     $userDao->reportUser($userToReport);
 }
 
@@ -46,8 +45,16 @@ if (isset($_GET['report'])) {
                             . '</tr>';
                             foreach ($messages as $message) {
                                 
+                                // Getting the author of the message
+                                if (!isset($userDao)) {
+                                    $userDao = new User_dao();
+                                }
+                                $messageAuthor = $userDao->retrievUserByUsername($message->get_id_emetteur());
+                                
                                 // Handling actions depending on the type of user: admin can report users
-                                if ($_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) {
+                                // but cannot report admin
+                                if (($_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) 
+                                        && ($messageAuthor->get_id_usertype() != (int) 3 || $messageAuthor->get_id_usertype() != (int) 2)) {
                                     $actions = '<a href="message_list.php?id_topic=' . $topic_id 
                                             . '&report=' . $message->get_id_emetteur() . '&name=' . $topic_name . '">'
                                                 . '<button>Report</button>'
@@ -66,8 +73,17 @@ if (isset($_GET['report'])) {
                                 // Getting last person and date to answser the message
                                 $lastAnswer = $message_dao->getLastAnswer($message->get_id_msg());
                                 
+                                // Getting image related to message if any exists
+                                $imageDao = new Image_dao();
+                                $retrievedImage = $imageDao->retrieveImageByMessageId($message->get_id_msg());
+                                
                                 echo '<tr>'
-                                    . '<td style="text-align: left;">'. $message->get_contenu_msg() . '</td>'
+                                    . '<td style="text-align: left;">'. $message->get_contenu_msg() . '</br>';
+                                        if ($retrievedImage != NULL) {
+                                            echo '<img class="messageImg" src="' . $retrievedImage->get_link() . '" name="' . $retrievedImage->get_name()
+                                                    . '" alt="' . $retrievedImage->get_name() . '"/>';
+                                        }
+                                    echo '</td>'
                                     . '<td>Posted by '. $message->get_id_emetteur(). ' on ' . $message->get_date_msg() . '</td>'
                                     . '<td>'; 
                                         if ($message_dao->getNbOfAnswerForSpecificMessage($message->get_id_msg()) > 0) {
