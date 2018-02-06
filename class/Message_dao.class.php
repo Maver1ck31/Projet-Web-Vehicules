@@ -48,6 +48,24 @@ class Message_dao {
         
         return $tableau;
     }
+    
+    // Retrieving message using its id
+    public function retieveMessageById($messageId) {
+        try {
+            $con = $this->con;
+            $sql = "SELECT * FROM message WHERE id_msg = $messageId";
+            $res = $con->query($sql);
+
+            $row = $res->fetch(PDO::FETCH_ASSOC);
+            $message = new Message($row);
+            
+        } catch (PDOException $exc) {
+            $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $message;
+    }
 
     // Insert a new message with correct topic and user
     public function addMessage($content, $user, $topic) {
@@ -61,6 +79,46 @@ class Message_dao {
             $message = "Erreur lor de la requête SQL : " . $e->getMessage();
             throw new Mon_exception($message);
         }
+    }
+    
+    // Return the nulber of answer for the message with id passed in param
+    public function getNbOfAnswerForSpecificMessage($messageId) {
+        try {
+            $con = $this->con;
+            $sql = "SELECT COUNT(id_rep) as nbMsg
+                    FROM reponse
+                    WHERE id_message =  $messageId";
+            $res = $con->query($sql);
+
+            $row = $res->fetch(PDO::FETCH_ASSOC);
+            $nbMessage = $row['nbMsg'];
+            
+        } catch (PDOException $exc) {
+            $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $nbMessage;
+    }
+    
+    // Return an array of the last person to answer (id_emetteur) and date (date_rep)
+    public function getLastAnswer($messageId) {
+        try {
+            $con = $this->con;
+            $sql = "SELECT reponse.id_emetteur, reponse.date_rep
+                    FROM reponse
+                    WHERE reponse.id_message = $messageId
+                    AND date_rep = (SELECT MAX(date_rep) FROM reponse WHERE reponse.id_message = $messageId)";
+            $res = $con->query($sql);
+
+            $row = $res->fetch(PDO::FETCH_ASSOC);
+            
+        } catch (PDOException $exc) {
+            $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $row;
     }
 }
 

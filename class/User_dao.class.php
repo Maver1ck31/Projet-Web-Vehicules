@@ -1,6 +1,6 @@
 <?php
 
-include 'Mon_exception.class.php';
+//include 'Mon_exception.class.php';
 
 class User_dao {
 
@@ -65,6 +65,16 @@ class User_dao {
         }
     }
 
+    public function reportUser($p_username) {
+        try {
+            $con = $this->con;
+            $sql = "UPDATE user SET isReported = 1 WHERE username = '$p_username'";
+            $con->exec($sql);
+        } catch (PDOException $ex) {
+            $message = "Erreur lor de la requête SQL : " . $ex->getMessage();
+            throw new Mon_exception($message);
+        }
+    }
 
     public function retrieveUser($username, $passwd) {
         try {

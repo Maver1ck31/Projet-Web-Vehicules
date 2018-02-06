@@ -9,8 +9,6 @@ document.location = 'login.php';
     <?php
 }
 
-include 'inc/entete.inc.php';
-
 $topic_id = $_GET['id_topic'];
 $topic_name = NULL;
 
@@ -19,14 +17,17 @@ if (isset($_GET['name'])) {
 }
 
 if (isset($_POST['submit'])) {
+    include './inc/global.inc.php';
     $content = htmlspecialchars($_POST['message']);
     $user = $_SESSION['name'];
     $messageDao = new Message_dao();
     if ($topic_id != NULL) {
         $messageDao->addMessage($content, $user, $topic_id);
-        header('location:messagelist.php?id_topic=' . $topic_id . '&name=' . $topic_name);
+        header('location:message_list.php?id_topic=' . $topic_id . '&name=' . $topic_name);
     }    
 }
+
+include 'inc/entete.inc.php';
 
 ?>
 <h2 id="titre">Create new Message in <i><?php echo $topic_name; ?></i> Topic</h2>
