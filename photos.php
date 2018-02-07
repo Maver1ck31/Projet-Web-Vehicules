@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'inc/entete.inc.php';
 ?>
                     <h2 id="titre">Images</h2>

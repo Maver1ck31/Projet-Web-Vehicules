@@ -1,4 +1,5 @@
 <?php
+session_start();
 $inscrit = "";
 $userExists = FALSE;
 $mailExists = FALSE;
