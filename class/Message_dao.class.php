@@ -133,9 +133,12 @@ class Message_dao {
                     WHERE contenu_msg = $content
                     AND id_emetteur = $user ";
             $res = $con->query($sql);
-
+            error_log('SQL Request getMessageByUserAndContent: ' . $sql);
             $row = $res->fetch(PDO::FETCH_ASSOC);
-            $message = new Message($row);
+            
+            if ($row != FALSE) {
+                $message = new Message($row);
+            }
             
         } catch (PDOException $exc) {
             $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
