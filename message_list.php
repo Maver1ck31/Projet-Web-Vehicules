@@ -32,10 +32,12 @@ if (isset($_GET['report'])) {
 <h2 id="titre">Forum - <i><?php echo $topic_name; ?></i> Message List</h2>
                     <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
                     <p>Welcome to the forum of the ford performance cars.</p>
-                    <div>
                     <?php
                         if ($messages != NULL) {
-                            echo '<table>'
+                            echo '<p>There is no message for this topic yet.</p>'
+                            . '<p><a href="create_message.php?id_topic=' . $topic_id
+                            . '&name=' . $topic_name . '"><button>Create new message</button></a></p>';
+                            echo '<table class="forum">'
                             . '<tr>'
                                 . '<th>Message</th>'
                                 . '<th>Author</th>'
@@ -104,7 +106,6 @@ if (isset($_GET['report'])) {
                             . '&name=' . $topic_name . '"><button>Create new message</button></a></p>';
                         }
                     ?>
-                    </div>
                     <!-- Footer -->
                     <?php
                     include 'inc/bas.inc.php';

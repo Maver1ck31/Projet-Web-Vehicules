@@ -14,10 +14,11 @@ class menu_dao {
 
     // Fonction de connection à la base de donnée (lancée par le constructeur)
     public function connecter() {
-        $user = 'root';
-        $passwd = 'root';
-        $host = 'localhost';
-        $base = 'photoLibrary';
+        $config = parse_ini_file('config.ini');
+        $user = $config['user'];
+        $passwd = $config['passwd'];
+        $host = $config['host'];
+        $base = $config['dbname'];
         $dsn = 'mysql:host=' . $host . ';dbname=' . $base;
 
         try {
@@ -27,7 +28,6 @@ class menu_dao {
         } catch (PDOException $e) {
             $message = "Erreur lors de la connexion : " . $e->getMessage();
             throw new Mon_exception($message);
-            return;
         }
     }
 

@@ -65,7 +65,7 @@ $retrievedImage = $imageDoa->retrieveImageByMessageId($message_id);
                     
                     // Display all answers
                     if ($reponses != NULL) {
-                        echo '<table>'
+                        echo '<table class="forum">'
                         . '<tr>'
                             . '<th>Answer</th>'
                             . '<th>Author</th>'

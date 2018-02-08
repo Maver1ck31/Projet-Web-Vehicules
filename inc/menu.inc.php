@@ -13,19 +13,8 @@ try {
     echo "<p>" . $e->getMessage() . "</p>";
 }
 ?>
-
             <nav>
                 <img src="images/logo_main-fordracing.png" alt="Ford" id="logoFordRacing"/>
-                <div id="userInfos">
-                    <?php
-                    if (!isset($_SESSION['name'])) {
-                        echo '<p>Welcome Guest</p>';
-                    } else {
-                        echo '<p>Welcome ' . $_SESSION['name'];
-                        echo '</p><p><a href="logout.php">Log out</a></p>';
-                    }
-                    ?>
-                </div>
                 <ul>
                     <?php
                             foreach ($tableau_menu_items as $menu_item) {
@@ -36,8 +25,5 @@ try {
                                 }
                             }
                     ?>
-<!--                    <li><a href="index.php">Home</a></li>
-                    <li><a href="photos.php">Photos</a></li>
-                    <li><a href="login.php">Connexion</a></li>-->
                 </ul>
             </nav>

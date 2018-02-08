@@ -24,12 +24,12 @@ $topics = $topicDao->retieveAllTopics();
                         and answer some of them aswell if you want.
                     <?php
                         if ($topics != NULL) {
-                            echo '<ul>';
+                            echo '<table class="forum">';
                             foreach ($topics as $topic) {
-                                echo "<li><a href='message_list.php?id_topic=". $topic->get_id_topic() .
-                                        "&name=" . $topic->get_topic_name() . "'>". $topic->get_topic_name() ."</a></li>";
+                                echo "<tr><td><a href='message_list.php?id_topic=". $topic->get_id_topic() .
+                                        "&name=" . $topic->get_topic_name() . "'>". $topic->get_topic_name() ."</a></td></tr>";
                             }
-                            echo '</ul>';
+                            echo '</table>';
                         }
                     ?>
                     </p>

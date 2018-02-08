@@ -17,6 +17,10 @@ a {
     color: black;  
 }
 
+.forum textarea {
+    background-color: #c4cdd3;
+}
+
 h1 {
     text-align: center;
     font-family: Georgia, "Bitstream Vera Serif", Norasi, serif;
@@ -116,7 +120,7 @@ div#conteneur {
 header {
     background-color: rgba(138,156,168,0.5);
     height: 200px;
-	min-width: 600px;
+    min-width: 600px;
     text-align: center;
     box-shadow: 0px 10px 10px rgba(138,156,168,0.2);
     position: relative;
@@ -148,6 +152,14 @@ div#menu a:hover {
 
 div#userInfos {
     color: white;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    bottom: 0px;
+    padding: 12px;
+    padding-left: 80px;
+    text-align: right;
+    background-color: rgba(50, 50, 50, 0.5);
 }
 
 /* -- contenu -- */
@@ -201,9 +213,41 @@ td, th {
 table {
     border-collapse: collapse;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
 }
 
+table.forum td, table.forum th {
+    border: none;
+    border-bottom: solid 1px;
+    border-color: #4B5A68;
+    background-color: #c4cdd3;
+    text-align: left;
+    padding: 0px;
+    height: 2em;
+    padding: 5px;
+}
+
+table.forum {
+    width: 100%;
+    padding: 0px;
+    border: solid 5px;
+    border-left: solid 15px;
+    border-right: solid 15px;
+    border-color: #c4cdd3;
+}
+
+table.forum td a {
+    color: black;
+    display: block;
+    height: 100%;
+    padding-top: 7px;
+}
+
+table.forum td img {
+    max-width: 400px;
+    width: 100%;
+    max-height: 400px;
+}
 /* -- Video -- */
 div#video {
     margin-left: auto;
@@ -215,8 +259,9 @@ div#video {
 
 div#ThreeLineMenu {
     position: absolute;
-    bottom: 7px;
-    left: 10px;
+    /*bottom: 2px;*/
+    top: 5px;
+    left: 20px;
 }
 div#ThreeLineMenu img{
     width: 40px;
