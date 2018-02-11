@@ -1,4 +1,4 @@
-                    </div>
+                    </article>
                 </div>
                 <div style="height: 100px;"> <!-- blank div to make some space for the footer -->
                 </div>

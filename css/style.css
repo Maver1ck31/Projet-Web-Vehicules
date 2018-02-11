@@ -63,7 +63,7 @@ nav > ul {
         width: 300px;
         text-align: left;
         font-size: 1.5em;
-        /*position: fixed;*/
+        position: fixed;
 }
 
 nav a {
@@ -71,30 +71,28 @@ nav a {
     color: #da190b;
     list-style-type: none;
     font-weight: bold;
-}
-
-/*nav a:active {
-    color: lightgrey;
-    text-decoration: none;
-}*/
-
-nav li {
-    /* display: inline; */
-    list-style-type: none;
+    display: block;
     padding: 0 0.5em;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 50px;
+}
+
+nav a:hover {
+    /*text-decoration: underline;*/
+    background-color: c4cdd3;
+    padding-left: 55px;
+}
+
+nav li {
+    /* display: inline; */
+    list-style-type: none;
     /*border-width: 0px 0px 1px 0px;*/
     /*border-bottom-color: #da190b;*/
     /*border-style: solid;*/
 }
 
-nav li:hover {
-    /*text-decoration: underline;*/
-    background-color: rgba(138,156,168,0.5);
-	padding-left:60px;
-}
+
 
 /* -- conteneur -- */
 div#conteneur { 
@@ -118,7 +116,7 @@ div#conteneur {
 
 /* -- entête -- */
 header {
-    background-color: rgba(138,156,168,0.5);
+    background-color: #c4cdd3;
     height: 200px;
     min-width: 600px;
     text-align: center;
@@ -150,26 +148,44 @@ div#menu a:hover {
     color: dodgerblue;
 }
 
+div#blank50pxheight{
+    height: 50px;
+}
+
 div#userInfos {
     color: white;
-    position: relative;
     height: 50px;
+    position: relative;
     width: 100%;
     bottom: 0px;
     padding: 12px;
     padding-left: 80px;
     text-align: right;
-    background-color: rgba(50, 50, 50, 0.5);
+    background-color: #5f6366;
+    z-index: 2;
 }
+
+div#userInfos.scrolledUserInfo{
+    position: fixed;
+    top: 0px;
+}
+
+
 
 /* -- contenu -- */
 div#contenu {
     position: relative;
-    padding: 10px;
-    /*float: left;*/
+    /* padding: 10px; !!! */
     flex:1;
-    /*min-height: -webkit-fill-available;*/
 }
+
+div#contenu article{
+    display: block;
+    margin: 20px;
+    margin-left: 60px;
+    margin-top: 0px;
+}
+
 
 .pagination a {
     border: 1px solid #E3E3E3; /* gris clair */

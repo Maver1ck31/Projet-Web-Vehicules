@@ -14,8 +14,14 @@ handleNav();
 
 $( window ).scroll( function (){
     var currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    //console.log("currentScroll = " + currentScroll);
-    $("nav > ul").css("padding-top", currentScroll);
+    console.log("scroll value = " + currentScroll);
+    if(currentScroll > 200){
+        $("div#userInfos").addClass("scrolledUserInfo");
+        $("div#blank50pxheight").show();
+    }else{
+        $("div#userInfos").removeClass("scrolledUserInfo");
+        $("div#blank50pxheight").hide();
+    }
 })
 
 $( window ).resize(function() {

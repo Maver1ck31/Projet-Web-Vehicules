@@ -13,24 +13,25 @@ include 'global.inc.php';
         <header id="entete">
             <img src="images/Logo_Ford_performance.png" style="margin-left: 0px; max-width: 90%;" alt="Ford Performance" id="logoFordPerf"/>   
         </header>
+        <div id="blank50pxheight"></div>
         <div id="userInfos">
-                <div id="ThreeLineMenu">
-                    <img src="images/ThreeLineMenu.png" alt="menu" onclick="toogleMenu();"/>
-                </div>
-                <?php
-                    if (!isset($_SESSION['name'])) {
-                        echo '<span>Welcome Guest</span>';
-                    } else {
-                        echo '<span>Welcome ' . $_SESSION['name'];
-                        echo '</span>&nbsp; | &nbsp;<span><a href="logout.php">Log out</a></span>';
-                    }
-                ?>
+            <div id="ThreeLineMenu">
+                <img src="images/ThreeLineMenu.png" alt="menu" onclick="toogleMenu();"/>
             </div>
+            <?php
+                if (!isset($_SESSION['name'])) {
+                    echo '<span>Welcome Guest</span>';
+                } else {
+                    echo '<span>Welcome ' . $_SESSION['name'];
+                    echo '</span>&nbsp; | &nbsp;<span><a href="logout.php">Log out</a></span>';
+                }
+            ?>
+        </div>
         <div id="conteneur">
             <!-- entete -->
             <?php
             include 'inc/menu.inc.php';
             ?>
             <div id="contenu">
-                <div style="max-width: 1000px; margin: auto; padding-left: 40px;">
-                    <div style="display: block; margin: 20px;">
+                <div style="max-width: 1000px; margin: auto;">
+                    <article>
