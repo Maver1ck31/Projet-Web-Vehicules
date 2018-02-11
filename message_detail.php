@@ -29,7 +29,7 @@ if (isset($_GET['name'])) {
 }
 
 $reponseDao = new Reponse_dao();
-$imageDoa = new Image_dao();
+$imageDao = new Image_dao();
 
 if (isset($_POST['submit'])) {
     $content = htmlspecialchars($_POST['answer']);
@@ -46,7 +46,7 @@ if (isset($_GET['report'])) {
 }
 
 $reponses = $reponseDao->retieveAllAnswerByMessageId($message_id);
-$retrievedImage = $imageDoa->retrieveImageByMessageId($message_id);
+$retrievedImage = $imageDao->retrieveImageByMessageId($message_id);
 
 ?>
 <h2 id="titre">Answer <i><?php echo $detailedMessage->get_id_emetteur();?></i> Message in <i><?php echo $topic_name; ?></i> Topic</h2>

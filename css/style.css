@@ -264,6 +264,13 @@ table.forum td img {
     width: 100%;
     max-height: 400px;
 }
+
+table.iconImg td img {
+    max-width: 46px;
+    width: 100%;
+    max-height: 46px;
+}
+
 /* -- Video -- */
 div#video {
     margin-left: auto;
@@ -332,4 +339,8 @@ section#image {
 
 .messageImg {
     width: 400px;
+}
+
+.iconImg {
+    width: 46px;
 }

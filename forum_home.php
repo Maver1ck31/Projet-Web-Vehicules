@@ -11,6 +11,7 @@ document.location = 'login.php';
 
 include 'inc/entete.inc.php';
 
+$imageDao = new Image_dao();
 $topicDao = new Topic_dao();
 $topics = $topicDao->retieveAllTopics();
 
@@ -26,8 +27,21 @@ $topics = $topicDao->retieveAllTopics();
                         if ($topics != NULL) {
                             echo '<table class="forum">';
                             foreach ($topics as $topic) {
+                                // Retrieve topic icon if exists
+                                $topicIcon = $imageDao->retrieveImageById($topic->get_topic_icon());
+                                
+                                if ($topicIcon != NULL) {
+                                    
+                                    $iconToShow = '<img class="iconImg" src="' . $topicIcon->get_link() 
+                                            . '" name="' . $topicIcon->get_name()
+                                            . '" alt="' . $topicIcon->get_name() . '"/>';
+                                } else {
+                                    $iconToShow = '';
+                                }
+                                
                                 echo "<tr><td><a href='message_list.php?id_topic=". $topic->get_id_topic() .
-                                        "&name=" . $topic->get_topic_name() . "'>". $topic->get_topic_name() ."</a></td></tr>";
+                                        "&name=" . $topic->get_topic_name() . "'>" 
+                                        . $topic->get_topic_name() . $iconToShow  . "</a></td></tr>";
                             }
                             echo '</table>';
                         }

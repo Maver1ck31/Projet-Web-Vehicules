@@ -46,6 +46,34 @@ class Image_dao {
         }
     }
     
+    // Retriev image by its id
+    public function retrieveImageById($imageId) {
+        $image = NULL;
+        
+        if ($imageId == NULL) {
+            return NULL;
+        }
+        
+        try {
+            $con = $this->con;
+            $sql = "SELECT * "
+                    . "FROM image "
+                    . "WHERE id_img = " . $imageId;
+            $res = $con->query($sql);
+            $row = $res->fetch(PDO::FETCH_ASSOC);
+            
+            if ($row != FALSE) {
+                $image = new Image($row);
+            }
+            
+        } catch (PDOException $e) {
+            $message = "Erreur lor de la requête SQL : " . $e->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $image;
+    }
+    
     // Retrieve image linked to a message
     public function retrieveImageByMessageId($messageId) {
         $image = NULL;

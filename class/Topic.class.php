@@ -3,6 +3,7 @@ class Topic {
 
     private $id_topic;
     private $topic_name;
+    private $topic_icon;
     
     function __construct($tableau = array()) {
         $this->hydrater($tableau);
@@ -17,6 +18,10 @@ class Topic {
         return $this->topic_name;
     }
     
+    function get_topic_icon() {
+        return $this->topic_icon;
+    }
+
     // Setters
     function set_id_topic($id_topic) {
         $this->id_topic = $id_topic;
@@ -24,6 +29,10 @@ class Topic {
 
     function set_topic_name($topic_name) {
         $this->topic_name = $topic_name;
+    }
+
+    function set_topic_icon($topic_icon) {
+        $this->topic_icon = $topic_icon;
     }
 
     // hydratation de l'objet
