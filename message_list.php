@@ -37,7 +37,7 @@ if (isset($_GET['report'])) {
                             echo '<p>There is no message for this topic yet.</p>'
                             . '<p><a href="create_message.php?id_topic=' . $topic_id
                             . '&name=' . $topic_name . '"><button>Create new message</button></a></p>';
-                            echo '<table class="forum">'
+                            echo '<table class="forum messages">'
                             . '<tr>'
                                 . '<th>Message</th>'
                                 . '<th>Author</th>'

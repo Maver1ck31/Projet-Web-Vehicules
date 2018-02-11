@@ -25,7 +25,7 @@ $topics = $topicDao->retieveAllTopics();
                         and answer some of them aswell if you want.
                     <?php
                         if ($topics != NULL) {
-                            echo '<table class="forum">';
+                            echo '<table class="forum topics">';
                             foreach ($topics as $topic) {
                                 // Retrieve topic icon if exists
                                 $topicIcon = $imageDao->retrieveImageById($topic->get_topic_icon());
@@ -34,14 +34,14 @@ $topics = $topicDao->retieveAllTopics();
                                     
                                     $iconToShow = '<img class="iconImg" src="' . $topicIcon->get_link() 
                                             . '" name="' . $topicIcon->get_name()
-                                            . '" alt="' . $topicIcon->get_name() . '"/>';
+                                            . '" alt="' . $topicIcon->get_name() . '"/>' . "&nbsp | &nbsp";
                                 } else {
                                     $iconToShow = '';
                                 }
                                 
                                 echo "<tr><td><a href='message_list.php?id_topic=". $topic->get_id_topic() .
                                         "&name=" . $topic->get_topic_name() . "'>" 
-                                        . $topic->get_topic_name() . $iconToShow  . "</a></td></tr>";
+                                        . $iconToShow . $topic->get_topic_name() . "</a></td></tr>";
                             }
                             echo '</table>';
                         }

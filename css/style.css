@@ -79,9 +79,37 @@ nav a {
 }
 
 nav a:hover {
-    /*text-decoration: underline;*/
-    background-color: c4cdd3;
-    padding-left: 55px;
+    padding-left: 60px;
+    background-color: #5f6366;
+    animation-duration: 0.5s;
+    animation-name: menuHoverIn;
+    animation-timing-function: ease;
+}
+nav a.out{
+    animation-duration: 0.5s;
+    animation-name: menuHoverOut;
+    animation-timing-function: ease;
+}
+@keyframes menuHoverIn{
+    from {
+        padding-left: 50px;
+        background-color: #4b5b68;
+      }
+      to {
+        padding-left: 60px;
+        background-color: #5f6366;
+      }
+}
+@keyframes menuHoverOut{
+    from {
+        padding-left: 60px;
+        background-color: #5f6366;
+      }
+    
+      to {
+        padding-left: 50px;
+        background-color: #4b5b68;
+      }
 }
 
 nav li {
@@ -242,6 +270,9 @@ table.forum td, table.forum th {
     height: 2em;
     padding: 5px;
 }
+table.forum.topics td{
+    padding: 0px;
+}
 
 table.forum {
     width: 100%;
@@ -256,18 +287,18 @@ table.forum td a {
     color: black;
     display: block;
     height: 100%;
-    padding-top: 7px;
+    padding: 5px;
+    padding-top: 12px;
 }
 
-table.forum td img {
+table.forum.messages td img {
     max-width: 400px;
     width: 100%;
     max-height: 400px;
 }
 
-table.iconImg td img {
+table.forum.topics td img {
     max-width: 46px;
-    width: 100%;
     max-height: 46px;
 }
 

@@ -8,6 +8,7 @@ function isMobile(){
     }
 }
 
+$("div#blank50pxheight").hide();
 var isMobile = isMobile();
 handleNavHeight();
 handleNav();
@@ -65,4 +66,13 @@ function toogleMenu(){
     //console.log("coucou");
     $("nav").toggle();
 }
+
+$("nav a").hover(
+    function () {
+        $(this).removeClass('out');
+    },
+    function () {
+        $(this).addClass('out');
+    }
+);
 
