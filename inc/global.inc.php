@@ -1,8 +1,5 @@
 <?php
-include_once 'Exceptions/Mon_exception.class.php';
-
-ini_set('display_errors', '1');
-ini_set('html_errors', '1');
+//include_once './../class/Exceptions/Mon_exception.class.php';
 
 // Autoload
 try {
