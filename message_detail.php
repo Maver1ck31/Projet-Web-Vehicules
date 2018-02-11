@@ -78,7 +78,6 @@ $retrievedImage = $imageDoa->retrieveImageByMessageId($message_id);
                                 $userDao = new User_dao();
                             }
                             $messageAuthor = $userDao->retrievUserByUsername($reponse->get_id_emetteur());
-                            error_log('idUsertType: ' . $messageAuthor->get_id_usertype());
                                 
                             // Handling actions depending on the type of user: admin can report users
                             if (($_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) 

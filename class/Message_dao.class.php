@@ -73,7 +73,6 @@ class Message_dao {
         try {
             $con = $this->con;
             $content = $con->quote($content);
-            error_log('message to add:' . $content);
             $sql = "insert into message(contenu_msg, date_msg, id_emetteur, id_topic)"
                     . "values ($content, SYSDATE(), '$user', $topic)";
             $con->exec($sql);
@@ -134,7 +133,6 @@ class Message_dao {
                     WHERE contenu_msg = $content
                     AND id_emetteur = $user ";
             $res = $con->query($sql);
-            error_log('SQL Request getMessageByUserAndContent: ' . $sql);
             $row = $res->fetch(PDO::FETCH_ASSOC);
             
             if ($row != FALSE) {

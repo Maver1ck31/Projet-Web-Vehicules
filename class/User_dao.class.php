@@ -99,7 +99,6 @@ class User_dao {
            $con = $this->con;
            $con->quote($username);
            $sql = "SELECT * FROM user WHERE username = '$username'";
-           error_log('SQL Request: '.$sql);
            $res = $con->query($sql);
            $row = $res->fetch(PDO::FETCH_ASSOC);
            

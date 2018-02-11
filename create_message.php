@@ -21,12 +21,10 @@ if (isset($_POST['submit'])) {
     
     $folder = 'images/uploads/';
     $file = basename($_FILES['fileToUpload']['name']);
-    error_log($file);
     $taille_maxi = 10485760;
     $taille = filesize($_FILES['fileToUpload']['tmp_name']);
     $extensions = array('.png', '.gif', '.jpg', '.jpeg');
     $extension = strrchr($_FILES['fileToUpload']['name'], '.');
-    error_log($extension);
     // Handling file upload first
     // Security checks...
     if (isset($_FILES['fileToUpload']['tmp_name'])) {
