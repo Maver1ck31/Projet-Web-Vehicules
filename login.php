@@ -44,8 +44,6 @@ if (isset($_POST['submit'])) {
 include 'inc/entete.inc.php';
 ?>
                 <h2 id="titre">Login</h2>
-                <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
-
                 <p>In order to access this website and view its content you should log in.
                     </br> If you don't have an account you can <a href="register.php">register</a>.</p>
                 <form method="post" action="login.php">

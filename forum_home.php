@@ -17,9 +17,7 @@ $topics = $topicDao->retieveAllTopics();
 
 ?>
                     <h2 id="titre">Forum</h2>
-                    <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
-                    <p>Welcome to the forum of the ford performance cars.</p>
-                    
+                    <p>Welcome to the forum of the ford performance cars.</p> 
                     <p>
                         Choose a topic to begin with, you will be able to post message 
                         and answer some of them aswell if you want.

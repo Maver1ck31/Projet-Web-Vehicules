@@ -74,9 +74,6 @@ include 'inc/entete.inc.php';
 
 ?>
 <h2 id="titre">Create new Message in <i><?php echo $topic_name; ?></i> Topic</h2>
-                    <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
-                    <p>Welcome to the forum of the ford performance cars.</p>
-                    <p>
                     <p>Input your new Message</p>
                     <form method="post" action="<?php echo 'create_message.php?id_topic='. $topic_id . '&name=' . $topic_name;?>"
                           enctype="multipart/form-data">

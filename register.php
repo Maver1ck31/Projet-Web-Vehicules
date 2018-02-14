@@ -73,8 +73,6 @@ if (isset($_POST['submit'])) {
 include 'inc/entete.inc.php';
 ?>
                     <h2 id="titre">Register</h2>
-                    <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
-
                     <p>Create your account to be able to log into the photo library and discuss with other members.
                         </br> All provide informations will not be shared with anyone. </br>
                             Please fill in all necessary informations.
