@@ -42,8 +42,6 @@ function showSlides(n) {
   if (slides[slideIndex-1] != undefined) {
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
-    } else {
-        console.log("BUG: slides = " + JSON.stringify(slides));
     }
 }
 
