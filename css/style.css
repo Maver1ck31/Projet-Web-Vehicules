@@ -17,8 +17,31 @@ a {
     color: black;  
 }
 
+/* Handling placeholder colors in the message answer*/
 .forum textarea {
     background-color: #c4cdd3;
+}
+
+.forum textarea::placeholder {
+    color: #5f6366;
+}
+
+.forum textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #5f6366;
+}
+.forum textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #5f6366;
+   opacity:  1;
+}
+.forum textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #5f6366;
+   opacity:  1;
+}
+.forum textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #5f6366;
+}
+.forum textarea::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #5f6366;
 }
 
 h1 {
@@ -187,10 +210,14 @@ div#userInfos {
     width: 100%;
     bottom: 0px;
     padding: 12px;
-    padding-left: 80px;
+    padding-right: 20px;
     text-align: right;
     background-color: #5f6366;
     z-index: 2;
+}
+
+div#userInfos a {
+    color: white;
 }
 
 div#userInfos.scrolledUserInfo{
@@ -281,6 +308,7 @@ table.forum {
     border-left: solid 15px;
     border-right: solid 15px;
     border-color: #c4cdd3;
+    margin-bottom: 30px;
 }
 
 table.forum td a {
@@ -288,7 +316,7 @@ table.forum td a {
     display: block;
     height: 100%;
     padding: 5px;
-    padding-top: 12px;
+    /*padding-top: 12px;*/
 }
 
 table.forum.messages td img {

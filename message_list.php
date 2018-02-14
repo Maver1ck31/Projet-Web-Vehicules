@@ -30,12 +30,9 @@ if (isset($_GET['report'])) {
 
 ?>
 <h2 id="titre">Forum - <i><?php echo $topic_name; ?></i> Message List</h2>
-                    <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
-                    <p>Welcome to the forum of the ford performance cars.</p>
                     <?php
                         if ($messages != NULL) {
-                            echo '<p>There is no message for this topic yet.</p>'
-                            . '<p><a href="create_message.php?id_topic=' . $topic_id
+                            echo '<p><a href="create_message.php?id_topic=' . $topic_id
                             . '&name=' . $topic_name . '"><button>Create new message</button></a></p>';
                             echo '<table class="forum messages">'
                             . '<tr>'
@@ -43,7 +40,7 @@ if (isset($_GET['report'])) {
                                 . '<th>Author</th>'
                                 . '<th>Answer(s)</th>'
                                 . '<th>Last answer</th>'
-                                . '<th>Actions</th>'
+                                . '<th>Action</th>'
                             . '</tr>';
                             foreach ($messages as $message) {
                                 

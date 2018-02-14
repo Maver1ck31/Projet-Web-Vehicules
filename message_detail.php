@@ -50,26 +50,34 @@ $retrievedImage = $imageDao->retrieveImageByMessageId($message_id);
 
 ?>
 <h2 id="titre">Answer <i><?php echo $detailedMessage->get_id_emetteur();?></i> Message in <i><?php echo $topic_name; ?></i> Topic</h2>
-                    <p>The website is actually under maintenance<br/>Thank you for your comprehension</p>
-                    <p>Welcome to the forum of the ford performance cars.</p>
-                    <p>
-                    <p>Original message</p>
-                    <textarea name="message" style="width: 500px; height: 100px;" disabled="disabled"><?php echo $detailedMessage->get_contenu_msg(); ?></textarea></p>
-                    <?php
-                    // Display an image if necessary
-                    if ($retrievedImage != NULL) {
-                        echo '<p><a href="' . $retrievedImage->get_link() . '" target="_blank">'
-                        . '<img class="messageImg" src="' . $retrievedImage->get_link() . '" name="' . $retrievedImage->get_name()
-                        . '" alt="' . $retrievedImage->get_name() . '"/></a></p>';
-                    }
-                    
+                    <table class="forum messages">
+                        <tr>
+                            <th>Original Message</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                <?php echo $detailedMessage->get_contenu_msg(); ?></br>
+                                <?php
+                                // Display an image if necessary
+                                if ($retrievedImage != NULL) {
+                                    echo '<p><a href="' . $retrievedImage->get_link() . '" target="_blank">'
+                                    . '<img class="messageImg" src="' . $retrievedImage->get_link() . '" name="' . $retrievedImage->get_name()
+                                    . '" alt="' . $retrievedImage->get_name() . '"/></a></p>';
+                                }
+                                ?>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <?php           
                     // Display all answers
                     if ($reponses != NULL) {
                         echo '<table class="forum">'
                         . '<tr>'
-                            . '<th>Answer</th>'
+                            . '<th>Answer(s)</th>'
                             . '<th>Author</th>'
-                            . '<th>Actions</th>'
+                            . '<th>Action</th>'
                         . '</tr>';
                         foreach ($reponses as $reponse) {
                             
@@ -98,22 +106,36 @@ $retrievedImage = $imageDao->retrieveImageByMessageId($message_id);
                         }
                         echo '<tr>'
                                 . '<form method="POST" action="message_detail.php">'
-                                    . '<td><textarea name="answer" style="width: 100%; height: 50px;"></textarea></td>'
+                                    . '<td><textarea name="answer" placeholder="Answer here" style="width: 100%; height: 50px;"></textarea></td>'
                                     . '<td></td>'
-                                    . '<td><p><input type="submit" name="submit" value="Answer"/></td>'
+                                    . '<td><p><input type="submit" name="submit" value="Post"/></td>'
                                     . '<input hidden ="hidden" type="text" name="name" value="' . $topic_name . '"/>'
                                     . '<input hidden ="hidden" type="text" name="id_msg" value="' . $detailedMessage->get_id_msg() . '"/>'
                                 . '</form>'
                            . '</tr>'
                            . '</table>';
                     } else {
-                        echo '<p>There is no answer for this message yet.</p>'
-                        . '<p><form method="POST" action="message_detail.php">'
-                                    . '<textarea name="answer" style="width: 500px; height: 200px;"></textarea>'
-                                    . '<p><input type="submit" name="submit" value="Create new Answer"/></p>'
+                        echo '<table class="forum">'
+                        . '<tr>'
+                            . '<th>Answer(s)</th>'
+                            . '<th>Action</th>'
+                        . '</tr>';
+                        echo '<tr>'
+                                . '<form method="POST" action="message_detail.php">'
+                                    . '<td><textarea name="answer" placeholder="Answer here" style="width: 500px; height: 200px;"></textarea></td>'
+                                    . '<td><input type="submit" name="submit" value="Create new Answer"/></td>'
                                     . '<input hidden ="hidden" type="text" name="name" value="' . $topic_name . '"/>'
                                     . '<input hidden ="hidden" type="text" name="id_msg" value="' . $detailedMessage->get_id_msg() . '"/>'
-                                . '</form></p>';
+                                . '</form>'
+                           . '</tr>'
+                           . '</table>';
+//                        echo '<p>There is no answer for this message yet.</p>'
+//                        . '<p><form method="POST" action="message_detail.php">'
+//                                    . '<textarea name="answer" style="width: 500px; height: 200px;"></textarea>'
+//                                    . '<p><input type="submit" name="submit" value="Create new Answer"/></p>'
+//                                    . '<input hidden ="hidden" type="text" name="name" value="' . $topic_name . '"/>'
+//                                    . '<input hidden ="hidden" type="text" name="id_msg" value="' . $detailedMessage->get_id_msg() . '"/>'
+//                                . '</form></p>';
                     }
                     ?>
                     </p>

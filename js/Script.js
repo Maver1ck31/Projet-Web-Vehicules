@@ -10,6 +10,7 @@ function isMobile(){
 
 $("div#blank50pxheight").hide();
 var isMobile = isMobile();
+var windowWidth = 0;
 handleNavHeight();
 handleNav();
 
@@ -26,8 +27,11 @@ $( window ).scroll( function (){
 })
 
 $( window ).resize(function() {
+    if(windowWidth != window.innerWidth) {
+        handleNav();
+    }
     handleNavHeight();
-    handleNav();
+
 })
 
 $(document).ready(function(){
@@ -45,7 +49,7 @@ function handleNavHeight(){
 }
 
 function handleNav(){
-    var windowWidth = window.innerWidth;
+    windowWidth = window.innerWidth;
     if( isMobile ) {
         // You are in mobile browser
         $("nav").hide();
