@@ -77,6 +77,9 @@ class Image_dao {
     // Retrieve image linked to a message
     public function retrieveImageByMessageId($messageId) {
         $image = NULL;
+        if ($messageId == NULL) {
+            return NULL;
+        }
         try {
             $con = $this->con;
             $sql = "SELECT * "
@@ -95,6 +98,26 @@ class Image_dao {
         }
         
         return $image;
+    }
+    
+    // Retrieve all images in the database
+    public function retrieveAllImages() {
+        $imagesArray = NULL;
+        try {
+            $con = $this->con;
+            $sql = "SELECT * FROM image";
+            $res = $con->query($sql);
+            
+            while ($image = $res->fetch(PDO::FETCH_ASSOC)) {
+                $imagesArray[] = new Image($image);
+            }
+            
+        } catch (PDOException $e) {
+            $message = "Erreur lor de la requête SQL : " . $e->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $imagesArray;
     }
 }
 

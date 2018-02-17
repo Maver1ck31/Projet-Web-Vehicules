@@ -28,7 +28,7 @@ include 'inc/entete.inc.php';
                                 </div>
 
                                 <div class="mySlides fade">
-                                    <img src="images/2017-ford-GT-Grey.jpg" >
+                                    <img src="images/2017-ford-GT.jpg" >
                                   <div class="text">Ford GT (2017)</div>
                                 </div>
 

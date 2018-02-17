@@ -39,7 +39,7 @@ if (isset($_GET['report'])) {
                                 . '<th>Message</th>'
                                 . '<th>Author</th>'
                                 . '<th>Answer(s)</th>'
-                                . '<th>Last answer</th>'
+                                //. '<th>Last answer</th>'
                                 . '<th>Action</th>'
                             . '</tr>';
                             foreach ($messages as $message) {
@@ -54,18 +54,19 @@ if (isset($_GET['report'])) {
                                 // but cannot report admin
                                 if (($_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) 
                                         && ($messageAuthor->get_id_usertype() != (int) 3 || $messageAuthor->get_id_usertype() != (int) 2)) {
-                                    $actions = '<a href="message_list.php?id_topic=' . $topic_id 
+                                    $actions = '<a class="button" href="message_list.php?id_topic=' . $topic_id 
                                             . '&report=' . $message->get_id_emetteur() . '&name=' . $topic_name . '">'
-                                                . '<button>Report</button>'
+                                                . 'Report'
                                             . '</a>'
-                                            . '<a href="message_detail.php?id_msg=' . $message->get_id_msg()
+                                            . '</br>'
+                                            . '<a class="button" href="message_detail.php?id_msg=' . $message->get_id_msg()
                                             . '&name=' . $topic_name .'">'
-                                                . '<button>Reply</button>'
+                                                . 'Reply'
                                             . '</a>';
                                 } else {
-                                    $actions = '<a href="message_detail.php?id_msg=' . $message->get_id_msg()
+                                    $actions = '<a class="button" href="message_detail.php?id_msg=' . $message->get_id_msg()
                                             . '&name=' . $topic_name .'">'
-                                                . '<button>Reply</button>'
+                                                . 'Reply'
                                             . '</a>';
                                 }
                                 
@@ -77,19 +78,21 @@ if (isset($_GET['report'])) {
                                 $retrievedImage = $imageDao->retrieveImageByMessageId($message->get_id_msg());
                                 
                                 echo '<tr>'
-                                    . '<td style="text-align: left;">'. $message->get_contenu_msg() . '</br>';
+                                    . '<td style="text-align: left;"><p>'. $message->get_contenu_msg() . '</br>';
                                         if ($retrievedImage != NULL) {
-                                            echo '<img class="messageImg" src="' . $retrievedImage->get_link() . '" name="' . $retrievedImage->get_name()
-                                                    . '" alt="' . $retrievedImage->get_name() . '"/>';
+                                            echo '<a class="messageLink" href="' . $retrievedImage->get_link() . '" target="_blank">'
+                                            . '<img class="messageImg" src="' . $retrievedImage->get_link() . '" name="' . $retrievedImage->get_name()
+                                                    . '" alt="' . $retrievedImage->get_name() . '"/></a></p>';
                                         }
                                     echo '</td>'
                                     . '<td>Posted by '. $message->get_id_emetteur(). ' on ' . $message->get_date_msg() . '</td>'
-                                    . '<td>'; 
+                                    . '<td style="text-align: center;">'; 
                                         if ($message_dao->getNbOfAnswerForSpecificMessage($message->get_id_msg()) > 0) {
                                             echo $message_dao->getNbOfAnswerForSpecificMessage($message->get_id_msg())
-                                            . '</td><td>By ' . $lastAnswer['id_emetteur'] . ' on ' . $lastAnswer['date_rep'] . '</td>';
+                                            . '</td>'; //. '<td>By ' . $lastAnswer['id_emetteur'] . ' on ' . $lastAnswer['date_rep'] . '</td>';
                                         } else {
-                                            echo 'No answer yet</td><td></td>';
+                                            echo 'No answer yet</td>';
+                                            //. '<td></td>';
                                         }
                                     echo '<td>'. $actions .'</td>'
                                 . '</tr>';

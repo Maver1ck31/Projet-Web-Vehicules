@@ -90,9 +90,9 @@ $retrievedImage = $imageDao->retrieveImageByMessageId($message_id);
                             // Handling actions depending on the type of user: admin can report users
                             if (($_SESSION['usertype'] == 2 || $_SESSION['usertype'] == 3) 
                                         && ($messageAuthor->get_id_usertype() != (int) 2 || $messageAuthor->get_id_usertype() != (int) 3)) {
-                                $actions = '<a href="message_detail.php?id_msg=' . $message_id 
+                                $actions = '<a class="button" href="message_detail.php?id_msg=' . $message_id 
                                          . '&report=' . $reponse->get_id_emetteur() . '&name=' . $topic_name . '">'
-                                         . '<button>Report</button>'
+                                         . 'Report'
                                          . '</a>';
                             } else {
                                 $actions = '';
@@ -108,7 +108,7 @@ $retrievedImage = $imageDao->retrieveImageByMessageId($message_id);
                                 . '<form method="POST" action="message_detail.php">'
                                     . '<td><textarea name="answer" placeholder="Answer here" style="width: 100%; height: 50px;"></textarea></td>'
                                     . '<td></td>'
-                                    . '<td><p><input type="submit" name="submit" value="Post"/></td>'
+                                    . '<td><p><input class="button" type="submit" name="submit" value="Post"/></td>'
                                     . '<input hidden ="hidden" type="text" name="name" value="' . $topic_name . '"/>'
                                     . '<input hidden ="hidden" type="text" name="id_msg" value="' . $detailedMessage->get_id_msg() . '"/>'
                                 . '</form>'
@@ -123,7 +123,7 @@ $retrievedImage = $imageDao->retrieveImageByMessageId($message_id);
                         echo '<tr>'
                                 . '<form method="POST" action="message_detail.php">'
                                     . '<td><textarea name="answer" placeholder="Answer here" style="width: 500px; height: 200px;"></textarea></td>'
-                                    . '<td><input type="submit" name="submit" value="Create new Answer"/></td>'
+                                    . '<td><input class="button" type="submit" name="submit" value="Create new Answer"/></td>'
                                     . '<input hidden ="hidden" type="text" name="name" value="' . $topic_name . '"/>'
                                     . '<input hidden ="hidden" type="text" name="id_msg" value="' . $detailedMessage->get_id_msg() . '"/>'
                                 . '</form>'

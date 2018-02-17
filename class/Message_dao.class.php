@@ -52,13 +52,22 @@ class Message_dao {
     
     // Retrieving message using its id
     public function retieveMessageById($messageId) {
+        
+        $message = NULL;
+        
+        if ($messageId == NULL) {
+            return NULL;
+        }
         try {
             $con = $this->con;
             $sql = "SELECT * FROM message WHERE id_msg = $messageId";
             $res = $con->query($sql);
 
             $row = $res->fetch(PDO::FETCH_ASSOC);
-            $message = new Message($row);
+            
+            if ($row != FALSE) {
+                $message = new Message($row);
+            }
             
         } catch (PDOException $exc) {
             $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
@@ -84,6 +93,7 @@ class Message_dao {
     
     // Return the nulber of answer for the message with id passed in param
     public function getNbOfAnswerForSpecificMessage($messageId) {
+        $nbMessage = 0;
         try {
             $con = $this->con;
             $sql = "SELECT COUNT(id_rep) as nbMsg
@@ -92,7 +102,10 @@ class Message_dao {
             $res = $con->query($sql);
 
             $row = $res->fetch(PDO::FETCH_ASSOC);
-            $nbMessage = $row['nbMsg'];
+            
+            if ($row != NULL) {
+                $nbMessage = $row['nbMsg'];
+            }
             
         } catch (PDOException $exc) {
             $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
