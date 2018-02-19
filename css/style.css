@@ -351,9 +351,15 @@ table.forum.topics td img {
     max-height: 46px;
 }
 
-table.photos td img {
+table.photos td img.photo {
     max-width: 300px;
     width: 100%;
+    max-height: 400px;
+}
+
+table.photos td img.icone {
+    max-width: 300px;
+    /* width: 100%; */
     max-height: 400px;
 }
 
