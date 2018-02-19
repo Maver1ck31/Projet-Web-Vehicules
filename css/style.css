@@ -352,9 +352,9 @@ table.forum.topics td img {
 }
 
 table.photos td img {
-    max-width: 200px;
-    /*width: 100%;*/
-    max-height: 200px;
+    max-width: 300px;
+    width: 100%;
+    max-height: 400px;
 }
 
 /* -- Video -- */
