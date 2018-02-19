@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+// Retrieve XML file with images to load
+$xmlFile = "xml/slider.xml";
+
+// Loading xml content
+$xml = simplexml_load_file($xmlFile);
+
+// Number of images
+$nbOfImages = $xml->count();
+
 include 'inc/entete.inc.php';
 ?>   
                         <h2 id="titre">Photos Library</h2>
@@ -10,28 +20,19 @@ include 'inc/entete.inc.php';
                         <div style="text-align: center;">
                             <!-- Slideshow container -->
                             <div class="slideshow-container">
-
+                                
                                 <!-- Full-width images with number and caption text -->
-                                <div class="mySlides fade">
-                                  <img src="images/2016-ford-focus-rs.jpg">
-                                  <div class="text">Focus RS MK3</div>
-                                </div>
-
-                                <div class="mySlides fade">
-                                    <img src="images/2015-Ford-Mustang.jpg" >
-                                  <div class="text">Ford Mustang GT</div>
-                                </div>
-
-                                <div class="mySlides fade">
-                                    <img src="images/2017-ford-fiesta-st.jpg" >
-                                  <div class="text">Ford Fiesta ST MK7</div>
-                                </div>
-
-                                <div class="mySlides fade">
-                                    <img src="images/2017-ford-GT.jpg" >
-                                  <div class="text">Ford GT (2017)</div>
-                                </div>
-
+                                <?php
+                                // print each image contain in xml file
+                                foreach ($xml as $image) {
+                                    echo 
+                                    '<div class="mySlides fade">'
+                                        . '<img src="' . $image->link . '">'
+                                        . '<div class="text">' . $image->caption . '</div>'
+                                    . '</div>';
+                                }
+                                ?>
+                                
                                 <!-- Next and previous buttons -->
                                 <a class="prev" onclick="plusSlides(-1)">&nbsp;</a>
                                 <a class="next" onclick="plusSlides(1)">&nbsp;</a>
@@ -41,10 +42,12 @@ include 'inc/entete.inc.php';
 
                         <!-- The dots/circles -->
                         <div style="text-align:center">
-                          <span class="dot" onclick="currentSlide(1)"></span> 
-                          <span class="dot" onclick="currentSlide(2)"></span>
-                          <span class="dot" onclick="currentSlide(3)"></span>
-                          <span class="dot" onclick="currentSlide(4)"></span>
+                          <?php
+                          // Display dots depending on number of image object in XML file
+                          for ($i = 0; $i < $nbOfImages; $i++) {
+                              echo ' <span class="dot" onclick="currentSlide(' . ($i + 1) . ')"></span> ';
+                          }
+                          ?>
                         </div>
 
                         <ul>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<slider>
+    <image>
+        <link>images/2016-ford-focus-rs.jpg</link>
+        <caption>Focus RS MK3</caption>
+    </image>
+    <image>
+        <link>images/2017-ford-fiesta-st.jpg</link>
+        <caption>Fiesta ST MK7</caption>
+    </image>
+    <image>
+        <link>images/2015-Ford-Mustang.jpg</link>
+        <caption>Mustang GT</caption>
+    </image>
+    <image>
+        <link>images/2017-ford-GT.jpg</link>
+        <caption>Ford GT</caption>
+    </image>
+    <image>
+        <link>images/2017-ford-GT-Grey.jpg</link>
+        <caption>Ford GT</caption>
+    </image>
+</slider>
