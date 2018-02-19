@@ -119,5 +119,29 @@ class Image_dao {
         
         return $imagesArray;
     }
+    
+    // Retrieve image according to its name 
+    public function retrieveSpecificImages($searchParam) {
+        $imagesArray = NULL;
+        try {
+            $con = $this->con;
+            $searchParam = '%' . $searchParam . '%';
+            $searchParam = $con->quote($searchParam);
+            $sql = "SELECT * "
+                    . "FROM image "
+                    . "WHERE name LIKE $searchParam "
+                    . "OR link LIKE $searchParam";
+            $res = $con->query($sql);
+
+            while ($image = $res->fetch(PDO::FETCH_ASSOC)) {
+                $imagesArray[] = new Image($image);
+            }
+            
+        } catch (PDOException $exc) {
+            $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
+            throw new Mon_exception($message);
+        }
+        return $imagesArray;
+    }
 }
 
