@@ -35,8 +35,8 @@ class User_dao {
         try {
             $con = $this->con;
             $cryptPasswd = md5($passwd);
-            $sql = "insert into user(username, mail, passwd, id_usertype, isReported)"
-                    . "values ('$username', '$mail', '$cryptPasswd', 1, 0)";
+            $sql = "INSERT INTO user(username, passwd, mail, id_usertype, isReported)"
+                    . "VALUES ('$username', '$cryptPasswd', '$mail', 1, 0)";
             $con->exec($sql);
         } catch (PDOException $e) {
             $message = "Erreur lor de la requête SQL : " . $e->getMessage();
@@ -78,18 +78,26 @@ class User_dao {
     }
 
     public function retrieveUser($username, $passwd) {
+        $user = NULL;
         try {
             $con = $this->con;
             $cryptPasswd = md5($passwd);
-            $sql = "select * from user where username = '$username' "
-                    . "and passwd = '$cryptPasswd'";
+            $sql = "SELECT * FROM user WHERE username = '$username' "
+                    . "AND passwd = '$cryptPasswd'";
             $res = $con->exec($sql);
             $user = $res->fetch(PDO::FETCH_ASSOC);
+            
+            if ($user != FALSE) {
+                return new User($user);
+            } else {
+                return NULL;
+            }
             
         } catch (PDOException $e) {
             $message = "Erreur lor de la requête SQL : " . $e->getMessage();
             throw new Mon_exception($message);
         }
+        
     }
     
     // Retrieve a specific user in db
@@ -119,6 +127,24 @@ class User_dao {
         try {
             $con = $this->con;
             $sql = "SELECT * FROM user WHERE isReported = 1";
+            $res = $con->query($sql);
+
+            while ($user = $res->fetch(PDO::FETCH_ASSOC)) {
+                $tableau[] = new User($user);
+            }
+        } catch (PDOException $exc) {
+            $message = "Erreur lor de la requête SQL : " . $exc->getMessage();
+            throw new Mon_exception($message);
+        }
+        
+        return $tableau;
+    }
+    
+    public function retrieveAllUsers() {
+        $tableau = NULL;
+        try {
+            $con = $this->con;
+            $sql = "SELECT * FROM user";
             $res = $con->query($sql);
 
             while ($user = $res->fetch(PDO::FETCH_ASSOC)) {

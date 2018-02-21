@@ -4,73 +4,57 @@ $inscrit = "";
 $userExists = FALSE;
 $mailExists = FALSE;
 
-// Si l'on appuie sur le bouton s'inscrire
+//Include header and menu
+include 'inc/entete.inc.php';
+
 if (isset($_POST['submit'])) {
-    // Récupération des valeurs
-    $username = $_POST['username'];
+    
+    // retrieving input data
+    $username = strtolower($_POST['username']);
     $password = $_POST['passwd'];
-    $mail = $_POST['email'];
-
-    // Connexion à la BD
-    include 'inc/connexion.inc.php';
-
-    // Hashage du password
-    // $password = password_hash($con->quote($password), PASSWORD_DEFAULT);
-    $password = sha1($password);
-
-    // Requete SQL de selection des pseudo
-    $sqlSelect = "SELECT username, mail FROM user";
-
-    // Requête SQL d'insertion
-    $sql = "INSERT INTO user(username, passwd, mail, id_usertype) VALUES"
-            . "('$username', '$password', '$mail', 1)";
-
-    try {
-        // Load de la BD
-        $result = $con->query($sqlSelect);
-        $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-
-        // Vérification existance utilisateur
-        foreach ($rows as $row) {
-            if ($row['username'] == $username) {
+    $password2 = $_POST['passwd2'];
+    $mail = strtolower($_POST['email']);
+    
+    error_log('passwd: ' . $password . ' | passwd2: ' . $password2);
+    
+    // if passwords doesn't match show error
+    if ($password != $password2) {
+        $inscrit = "<p style='color: red;'>Error the password and confirmation password does not match</p>";
+        $_POST['passwd'] = "";
+        $_POST['passwd2'] = "";
+    } else {    // else handle registration
+        $userDao = new User_dao();
+    
+        $users = $userDao->retrieveAllUsers();
+        foreach ($users as $user) {
+            if ($user->get_username() == $username) {
                 $userExists = TRUE;
                 break;
-            } else if ($row['mail'] == $mail) {
+            } else if ($user->get_mail() == $mail) {
                 $mailExists = TRUE;
                 break;
             }
         }
-
-        // Affichage ou ajout en fonction de la valeur de userExits et mailExists
-        if ($userExists || $mailExists) {
-            if ($userExists) {
-                $inscrit = "<p style='color: red;'>Error the username already exists!</p>";
-                $_POST['username'] = "";
-                ?>
-
-<!--            <script type="text/javascript">
-                alert(<?php echo 'The username: ' . $username . ' already exists'; ?>);
-            </script>-->
-
+        
+        if ($userExists) {  // Stop register 
+            $inscrit = "<p style='color: red;'>Error the username already exists, choose another one</p>";
+            $_POST['username'] = "";
+        } else if ($mailExists) {   // Stop register
+            $inscrit = "<p style='color: red;'>Error the email adress is already linked to an account!</p>";
+            $_POST['email'] = "";
+        } else {    // Register user
+            $userDao->addUser($username, $mail, $password);
+            ?>
+            <script type="text/javascript">
+                alert("Registration successful, you're now able to log in.\nYou will be redirected to login page...");
+                document.location = 'login.php';
+            </script>
             <?php
-            } else if ($mailExists) {
-                $inscrit = "<p style='color: red;'>Error the email adress is already linked to an account!</p>";
-                $_POST['email'] = "";
-            }
-        } else {
-            // Ajout à la BD
-            $res = $con->exec($sql);
-            $inscrit = "<p style='color: green;'>Registration successful, you're now able to log in.</p>";           
+            //$inscrit = "<p style='color: green;'>Registration successful, you're now able to log in.</p>";
         }
-    } catch (PDOException $e) {
-        die("<p>Erreur lors de la requête SQL : " . $e->getMessage() . "</p>");
-    }
+    
+    }    
 }
-?>
-
-<!-- Include header and menu-->
-<?php
-include 'inc/entete.inc.php';
 ?>
                     <h2 id="titre">Register</h2>
                     <p>Create your account to be able to log into the photo library and discuss with other members.
@@ -90,6 +74,11 @@ include 'inc/entete.inc.php';
                                 <br/>
                                 <label for="passwd"><b>Password</b></label><span style="color: red;">&nbsp;*</span><br/>
                                 <input type="password" id="passwd" name="passwd"
+                                       size="25" maxlength="25" value="" required />
+                                <br/>
+                                <br/>
+                                <label for="passwd"><b>Password confirmation</b></label><span style="color: red;">&nbsp;*</span><br/>
+                                <input type="password" id="passwd2" name="passwd2"
                                        size="25" maxlength="25" value="" required />
                                 <br/>
                                 <br/>

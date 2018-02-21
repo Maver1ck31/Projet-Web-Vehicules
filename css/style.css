@@ -288,14 +288,6 @@ table {
     border-width: 2px;
 }
 
-/*table.forum .button {
-    display: block;
-    background-color: #5f6366;
-    color:white;
-    padding: 4px;
-    box-shadow: 2px 2px #4B5A68;
-}*/
-
  .button {
     display: block;
     background-color: #5f6366;
@@ -356,6 +348,9 @@ table.photos td img.photo {
     max-width: 300px;
     width: 100%;
     max-height: 400px;
+}
+
+table.photos {
     border: none;
 }
 

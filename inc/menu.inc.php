@@ -15,7 +15,7 @@ try {
 ?>
             <nav>
                 <img src="images/logo_main-fordracing.png" alt="Ford" id="logoFordRacing"/>
-                <ul>
+                <ul style="margin-top: 30px;">
                     <?php
                             foreach ($tableau_menu_items as $menu_item) {
                                 if ($menu_item->get_link() != "login.php" && isset($_SESSION['name'])) {
@@ -25,5 +25,5 @@ try {
                                 }
                             }
                     ?>
-                </ul>
+                </p>
             </nav>
