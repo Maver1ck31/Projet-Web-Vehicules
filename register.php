@@ -15,8 +15,6 @@ if (isset($_POST['submit'])) {
     $password2 = $_POST['passwd2'];
     $mail = strtolower($_POST['email']);
     
-    error_log('passwd: ' . $password . ' | passwd2: ' . $password2);
-    
     // if passwords doesn't match show error
     if ($password != $password2) {
         $inscrit = "<p style='color: red;'>Error the password and confirmation password does not match</p>";
